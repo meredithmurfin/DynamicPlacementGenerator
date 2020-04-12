@@ -148,7 +148,7 @@ def import_all_possible_removal_situations(data_storage):
 	logging.info("Importing all possible removal situations...")
 	for engine_subtype in data.engine_subtypes:
 		data_storage = import_removal_situations(
-			filepath='data_exported/' + engine_subtype + '_all_possible_removal_situations.csv',
+			filepath='data_to_read/' + engine_subtype + '/' + engine_subtype + '_all_possible_removal_situations.csv',
 			engine_subtype=engine_subtype,
 			data_storage=data_storage)
 	logging.info("All possible removal situations have been imported.")

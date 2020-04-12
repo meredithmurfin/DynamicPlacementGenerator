@@ -412,7 +412,7 @@ class RemovalsGenerator:
 				elif len(values) == 9:
 					self.nine_values(values)
 		writer_util.export_all_possible_removal_situations(
-			filepath='data_exported/' + self.engine_subtype + '_all_possible_removal_situations.csv',
+			filepath='data_to_read/' + self.engine_subtype + '/' + self.engine_subtype + '_all_possible_removal_situations.csv',
 			engine_subtype=self.engine_subtype,
 			all_possible_removal_situations=data.all_possible_removal_situations[self.engine_subtype])
 
