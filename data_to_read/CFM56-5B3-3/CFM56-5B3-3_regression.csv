@@ -1,0 +1,9 @@
+Hub/Region,RR coeff,D coeff,Intercept
+ATL,,,
+CVG,,,
+DTW,0.000013,-0.00076,-3.16
+LAX,,,
+MSP,,,
+SEA,,,
+SLC,,,
+OTHER,0.000045,-0.00893,-1.25
