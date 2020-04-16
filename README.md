@@ -124,12 +124,15 @@ The `us_airport_data.csv` file located in `DynamicPlacementGenerator/data_to_rea
 - Closest hub by travel time, with travel time in minutes
 
 **`total_RONSRADS_ground_time_by_hub_monthly.csv`**
+
 This file contains the summed monthly total ground time (in minutes) of all departures defined as a RON or RAD for each hub. The summed total for all airports excluding hubs is included in the OTHER column.
 
 **`total_departures_ground_time_by_state_region_monthly.csv`**
+
 This file contains the summed monthly total ground time (in minutes) of all departures for each hub and state region. 
 
 **`num_departures_by_hub_monthly.csv`**
+
 This file contains the monthl count of departure occurrences for each hub. The count of departure occurrences for all airports excluding hubs is included in the OTHER column.
 
 #### Update Information to Reflect Current State/System
