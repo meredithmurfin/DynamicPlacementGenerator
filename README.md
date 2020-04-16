@@ -184,14 +184,14 @@ The program may take several hours to run.
 
 For each engine subtype (located in `DynamicPlacementGenerator/data_to_read/engine_subtype/`):
 
-| File 															| Description 												|
-| ------------------------------------------------------------- | --------------------------------------------------------- |
-| `total_RONSRADS_ground_time_by_hub_monthly.csv` 				| RON/RAD ground time data for 01-2019 spare placement 		|
-| `total_departures_ground_time_by_state_region_monthly.csv`	| Departure ground time data for 01-2019 spare placement 	|
-| `num_departures_by_hub_monthly.csv` 							| Departure counts for 01-2019 spare placement 				|
-| `regression.csv` 												| Regression values based on 2015-2019 data 				|
-| `number_of_broken_engines_and_number_repaired.csv` 			| Probabilities of engines repaired given on engines broken |
-| `expected_transport_cost.csv` 								| Expected transportation costs from hubs to state regions 	|
+| File 														| Description 												|
+| ----------------------------------------------------------| --------------------------------------------------------- |
+| `total_RONSRADS_ground_time_by_hub_monthly` 				| RON/RAD ground time data for 01-2019 spare placement 		|
+| `total_departures_ground_time_by_state_region_monthly`	| Departure ground time data for 01-2019 spare placement 	|
+| `num_departures_by_hub_monthly` 							| Departure counts for 01-2019 spare placement 				|
+| `regression` 												| Regression values based on 2015-2019 data 				|
+| `number_of_broken_engines_and_number_repaired` 			| Probabilities of engines repaired given on engines broken |
+| `expected_transport_cost` 								| Expected transportation costs from hubs to state regions 	|
 
 Turnover documents will be provided that will outline how to re-calculate regression values based on new past data.
 
