@@ -82,12 +82,16 @@ def minimize_actions(current_state, num_working_engines):
 
 def validate_removal_and_engine_info():
 	for engine_subtype in data.engine_subtypes:
-		
-	data.aos_cost
-	data.removals_info
-	data.engines_info
+		assert (engine_subtype in data.aos_cost), "No AOS cost was provided for " + engine_subtype + " in the removal_info file. Please provide ALL info for this engine subtype in the removal_info file."
+		assert (data.aos_cost[engine_subtype] > 0), "AOS cost for " + engine_subtype + " is not set to a positive value. Please provide a positive value indicating the expected AOS cost for this engine type in the removal_info file."
+		assert (engine_subtype in data.engines_info), "No engine data was provided for " + engine_subtype + " in the engine_info file. Please provide ALL info for this engine subtype in the engine_info file."
+		assert (data.engines_info[engine_subtype]['TOTAL_NUM_ENGINES'] <= 5), "The program is limited to running only for engine types with 5 or less total engines. The " + engine_subtype + " has more than 5 engines."
+		total_engines = data.engines_info[engine_subtype]['NUM_WORKING_ENGINES'] + data.engines_info[engine_subtype]['NUM_BROKEN_ENGINES_ATL'] + data.engines_info[engine_subtype]['NUM_BROKEN_ENGINES_MSP']
+		assert (data.engines_info[engine_subtype]['TOTAL_NUM_ENGINES'] == total_engines), "The total number of engines does not equal the sum of engines working, engines broken at ATL, and engines broken at MSP for the " + engine_subtype + ". Make sure the value in the TOTAL_NUM_ENGINES column is equal to the sum of values in the TOTAL_NUM_WORKING, NUM_BROKEN_ATL, and NUM_BROKEN_MSP columns."
+		assert (data.engines_info[engine_subtype]['NUM_WORKING_ENGINES'] == sum(data.engines_info[engine_subtype]['CURRENT_STATE'])), "The number of working engines does not equal the sum of engines currently at each hub for the " + engine_subtype + ". Make sure the value in the TOTAL_NUM_WORKING column is equal to the sum of values in the NUM_WORKING columns for each hub."
 
 def validate_engine_subtype_data():
+	pass
 
 
 
