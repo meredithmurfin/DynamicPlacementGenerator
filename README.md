@@ -8,6 +8,20 @@ Delta Air Lines is an industry-leading, globally operating United States airline
 
 The objective of this project is to assist Delta’s EDP team with improving the allocation of spare engines across the contiguous United States. To assist Delta in decreasing both transportation and AOS costs incurred throughout the year, the solution determines the optimal configuration of all spare engines on a monthly basis through a Markov Decision Process. The solution outputs a configuration recommendation for the upcoming month associated with the minimal cost of all possible options. Delta’s EDP team can use the model to make data-informed, cost-driven decisions with the added benefit of reducing required labor hours.
 
+This program currently generates optimal spare placement for the following engine types:
+- BR700-715C1-30
+- CF6-80C2B8F
+- CFM56-5A
+- CFM56-5B3-3
+- CFM56-7B26
+- CFM56-7B27E-B1F
+- PW2000-2037
+- PW2000-2040
+- TRENT8-892-17
+- V2500-D5
+
+Spare engine placement for additional engine types can be determined only if the necessary information is provided. 
+
 ## Installations and Setup
 
 Instructions to install the required installations are outlined below with provided terminal commands. These instructions assume basic understanding of using Terminal on Mac. If your machine is not a Mac, these instructions may need to be altered slightly. 
@@ -148,7 +162,7 @@ This file contains information on expected number of removals for each engine su
 
 Our team based these values on past removal data for each type. We set the maximum number of removals that could happen based on data from 2015-2019 by taking the maximum that had ever occurred for each and adding 1 to it. For example, if no more than 3 removals ever occurred in ATL, we assumed the maximum number of removals that could ever happen at ATL would be 4.
 
-Limitations:
+*Limitations*:
 - The maximum number of removals for all airports cannot be less than 1 or greater than 10
 - The maximum number of removals for each specific hub cannot be greater than 10
 - The maximum number of removals for all airports excluding hubs cannot be greater than 2
@@ -164,10 +178,14 @@ This file contains information on engine numbers for each engine subtype. This w
 - Number of current broken spare engines being repaired at MSP
 - Number of working spare engines currently being stored at each hub
 
-Limitations:
+*Limitations*:
 - The total number of current spare engines cannot be less than 1 and cannot be greater than 5
 
 The purpose of this file is to understand the current state being considered so that the action to take associated with the minimum cost is returned.
+
+**`data_to_read/engine_subtypes.csv`**
+
+This file contains a list of all engine subtypes this program will generate optimal spare placement for. Engines may be removed from this list prior to running the program if spare placement is to only be generated for specific engines. Engines may also be added to this list, but only if all of the necessary information is provided for that engine in the same format. 
 
 #### Run the Program
 

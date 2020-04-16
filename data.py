@@ -17,8 +17,7 @@ def init():
 		'TN', 'TX', 'VA', 'WA', 'WI', 'WI-MI', 'WV-VA', 'WY']
 
 	global engine_subtypes
-	engine_subtypes = ['BR700-715C1-30', 'CF6-80C2B8F', 'CFM56-5A', 'CFM56-5B3-3', 'CFM56-7B26',
-		'CFM56-7B27E-B1F', 'PW2000-2037', 'PW2000-2040', 'TRENT8-892-17', 'V2500-D5']
+	engine_subtypes = []
 
 	'''
 	A dictionary that holds all possible states in the MDP as a list of lists for each total number 

@@ -216,11 +216,8 @@ def generate_all_possible_removal_situations(engine_subtype):
 	removals_info = data.removals_info[engine_subtype]
 
 	num_different_removals_non_hubs = removals_info['MAX_NUM_REMOVALS_MONTHLY_NON_HUBS']
-	if num_different_removals_non_hubs not in [0, 1, 2]:
-		raise Exception("This program cannot handle generating all removal situations for non-hub locations having more than 2 total removals. Make sure MAX_NUM_REMOVALS_MONTHLY_NON_HUBS is set to 0, 1, or 2.")
-	
-	if removals_info['MAX_NUM_REMOVALS_MONTHLY_TOTAL'] > 10:
-		raise Exception("This program cannot handle generating all removal situations for more than 10 total removals. Make sure MAX_NUM_REMOVALS_MONTHLY_TOTAL is set to a value between 1 and 10.")
+	assert num_different_removals_non_hubs in [0, 1, 2], "This program cannot handle generating all removal situations for non-hub locations having more than 2 total removals. Make sure MAX_NUM_REMOVALS_MONTHLY_NON_HUBS is set to 0, 1, or 2."
+	assert removals_info['MAX_NUM_REMOVALS_MONTHLY_TOTAL'] <= 10, "This program cannot handle generating all removal situations for more than 10 total removals. Make sure MAX_NUM_REMOVALS_MONTHLY_TOTAL is set to a value between 1 and 10."
 
 	num_allowed_at_hubs = find_num_occurrences_of_max_removals_for_hubs([
 		removals_info['MAX_NUM_REMOVALS_MONTHLY_ATL'],
@@ -266,8 +263,7 @@ def generate_all_possible_removal_situations(engine_subtype):
 	removals_generator.generate_all_removal_situations()
 
 def find_num_occurrences_of_max_removals_for_hubs(max_num_removals_at_hubs):
-	if max(max_num_removals_at_hubs) > 10:
-		raise Exception("This program cannot handle generating all removal situations for more than 10 removals happening at any hub location. Make sure MAX_NUM_REMOVALS_MONTHLY for each hub is set to a value between 0 and 10.")
+	assert max(max_num_removals_at_hubs) <= 10, "This program cannot handle generating all removal situations for more than 10 removals happening at any hub one location. Make sure MAX_NUM_REMOVALS_MONTHLY for each hub is set to a value between 0 and 10."
 	max_num_removals_at_hubs_set = set(max_num_removals_at_hubs)
 	unique_max_num_removals_at_hubs = list(max_num_removals_at_hubs_set)
 	num_allowed_at_hubs = {}
@@ -1019,7 +1015,7 @@ class RemovalsGenerator:
 		return ((len(values) - 1) > self.max_different_removals_hubs)
 
 	def values_to_sum_contain_less_than_two_ones(self, values):
-		return (values.count(1) < 2)
+		return (values.count(1) >= 2)
 
 	def append_to_beginning_of_indices_to_iterate_for_current_values(self, list_of_lists_to_append):
 		for a_list in list_of_lists_to_append:
@@ -1056,8 +1052,7 @@ class RemovalsGenerator:
 		if self.max_removals_non_hubs == 2:
 			if self.more_than_one_value_must_occur_outside_of_hubs(values):
 				self.more_than_one_value_must_occur_at_non_hubs = True
-				if self.values_to_sum_contain_less_than_two_ones(values):
-					raise Exception("Two values must occur at non-hubs to generate permutations for this sum.")
+				assert self.values_to_sum_contain_at_least_two_ones(values), "Two values must occur at non-hubs to generate permutations for this sum."
 				else:
 					self.append_to_beginning_of_indices_to_iterate_for_current_values([self.num_non_hubs, self.num_non_hubs])
 					values_to_edit = self.remove_values_for_which_index_lists_have_been_found(values_to_edit, [1, 1])

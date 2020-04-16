@@ -6,6 +6,9 @@ import pprint, logging
 if __name__ == '__main__':
 	data.init()
 
+	# Import engine subtypes
+	reader_util.import_engine_subtypes()
+	
 	# Import removal information
 	data.removals_info, data.aos_cost = reader_util.import_removal_info(
 		filepath='data_to_read/removal_info.csv',
@@ -26,8 +29,12 @@ if __name__ == '__main__':
 			filepath='data_to_read/engine_info.csv',
 			data_storage=data.engines_info)
 
+		data_util.validate_removal_and_engine_info()
+
 		# Import engine subtype data
 		reader_util.import_engine_subtype_data()
+
+		data_util.validate_engine_subtype_data()
 
 		# Generate all possible removal situations if removal info has been updated
 		for engine_subtype in data.engine_subtypes:

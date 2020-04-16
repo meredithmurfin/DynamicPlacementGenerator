@@ -80,3 +80,18 @@ def minimize_actions(current_state, num_working_engines):
 	actions_minimized = np.array(actions_minimized)
 	return actions_minimized
 
+def validate_removal_and_engine_info():
+	for engine_subtype in data.engine_subtypes:
+		
+	data.aos_cost
+	data.removals_info
+	data.engines_info
+
+def validate_engine_subtype_data():
+
+
+
+
+
+
+
