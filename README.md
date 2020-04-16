@@ -104,7 +104,7 @@ For each engine type, update:
 
 These files can be found in `DynamicPlacementGenerator/data_to_read/engine_subtype/`. 
 
-**It is very important that the format of these files stays the same as the examples that are currenty provided.** You must provide data for each engine subtype for the next 3 months. Below are descriptions of the structure for each, but we have provided file examples for each engine subtype already in the folders that reflect accurate data needed to run this program for January 2019. 
+**It is very important that the format of these files stays the same as the examples that are currently provided.** You must provide data for each engine subtype for the next 3 months. Below are descriptions of the structure for each, but we have provided file examples for each engine subtype already in the folders that reflect accurate data needed to run this program for January 2019. 
 
 The files look similar to this:
 
@@ -179,6 +179,16 @@ python3 app.py
 ```
 
 The program may take several hours to run. 
+
+## Files Provided
+
+For each engine subtype (using the BR700-715C1-30 as the example):
+- `BR700-715C1-30_total_RONSRADS_ground_time_by_hub_monthly.csv` (RON/RAD ground time data for January 2019 spare placement)
+- `BR700-715C1-30_total_departures_ground_time_by_state_region_monthly.csv` (departure ground time data for January 2019 spare placement)
+- `BR700-715C1-30_num_departures_by_hub_monthly.csv` (departure counts for January 2019 spare placement)
+- `BR700-715C1-30_regression.csv` (regression values to determine probabilities based on 2015-2019 data)
+- `BR700-715C1-30_number_of_broken_engines_and_number_repaired.csv` (probabilities of number of engines repaired based on the number broken, based on 2015-2019 data)
+- `BR700-715C1-30_expected_transport_cost.csv` (expected transportation costs from each hub to each state region)
 
 ## Authors
 
