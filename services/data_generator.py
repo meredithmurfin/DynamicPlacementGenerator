@@ -1,15 +1,226 @@
-from util import data_util, writer_util
+from util import data_util, reader_util, writer_util
 import data
-import numpy as np
-import scipy.sparse as sp
-from itertools import combinations, chain, groupby
+from itertools import combinations, combinations_with_replacement, permutations, chain, groupby
 from operator import sub
-import pprint, logging, operator, copy
-from datetime import date
+import numpy as np
+import pprint, logging, copy
 
-def find_all_removal_situations(engine_subtype, removals_info):
-	logging.info("Generating all possible removal situations for the " + engine_subtype + " engine...")
-	logging.info("Removal information being used for this type: " + str(removals_info))
+def generate_all_possible_states():
+	all_states = {1: [], 2: [], 3: [], 4: [], 5: []}
+	for num in range(1, 6):
+		logging.info("Generating all possible states for " + str(num) + " engine(s) to use for the MDP...")
+		sums = find_all_unique_sums_to_n(num)
+		for s in sums:
+			if len(s) == 1:
+				new_states = generate_states_for_sum_length_1(s)
+				all_states[num].extend(new_states)
+			elif len(s) == 2:
+				new_states = generate_states_for_sum_length_2(s)
+				all_states[num].extend(new_states)
+			elif len(s) == 3:
+				new_states = generate_states_for_sum_length_3(s)
+				all_states[num].extend(new_states)
+			elif len(s) == 4:
+				new_states = generate_states_for_sum_length_4(s)
+				all_states[num].extend(new_states)
+			elif len(s) == 5:
+				new_states = generate_states_for_sum_length_5(s)
+				all_states[num].extend(new_states)
+		logging.info("States have been generated.")
+	writer_util.export_all_possible_states(all_states)
+
+def generate_states_for_sum_length_1(s):
+	states = []
+	state = [0, 0, 0, 0, 0, 0, 0]
+	for i in range(7):
+		current_state = state[:]
+		current_state[i] = s[0]
+		states.append(current_state)
+	return states
+
+def generate_states_for_sum_length_2(s):
+	states = []
+	state = [0, 0, 0, 0, 0, 0, 0]
+	for i in range(7):
+		for j in range(7):
+			if indices_are_not_equal([i, j]):
+				current_state = state[:]
+				current_state[i] = s[0]
+				current_state[j] = s[1]
+				states.append(current_state)
+	return states
+
+def generate_states_for_sum_length_3(s):
+	states = []
+	state = [0, 0, 0, 0, 0, 0, 0]
+	for i in range(7):
+		for j in range(7):
+			for k in range(7):
+				if indices_are_not_equal([i, j, k]):
+					current_state = state[:]
+					current_state[i] = s[0]
+					current_state[j] = s[1]
+					current_state[k] = s[2]
+					states.append(current_state)
+	return states
+
+def generate_states_for_sum_length_4(s):
+	states = []
+	state = [0, 0, 0, 0, 0, 0, 0]
+	for i in range(7):
+		for j in range(7):
+			for k in range(7):
+				for l in range(7):
+					if indices_are_not_equal([i, j, k, l]):
+						current_state = state[:]
+						current_state[i] = s[0]
+						current_state[j] = s[1]
+						current_state[k] = s[2]
+						current_state[l] = s[3]
+						states.append(current_state)
+	return states
+
+def generate_states_for_sum_length_5(s):
+	states = []
+	state = [0, 0, 0, 0, 0, 0, 0]
+	for i in range(7):
+		for j in range(7):
+			for k in range(7):
+				for l in range(7):
+					for m in range(7):
+						if indices_are_not_equal([i, j, k, l, m]):
+							current_state = state[:]
+							current_state[i] = s[0]
+							current_state[j] = s[1]
+							current_state[k] = s[2]
+							current_state[l] = s[3]
+							current_state[m] = s[4]
+							states.append(current_state)
+	return states
+
+def generate_all_possible_actions():
+	for num in range(1, 6):
+		logging.info("Generating all possible actions for " + str(num) + " engine(s) to use for the MDP...")
+		all_actions = []
+		sums = find_all_unique_sums_to_n(num)
+		for s in sums:
+			if len(s) == 1:
+				new_actions = generate_actions_for_sum_length_1(s)
+				all_actions.extend(new_actions)
+			elif len(s) == 2:
+				new_actions = generate_actions_for_sum_length_2(s)
+				all_actions.extend(new_actions)
+			elif len(s) == 3:
+				new_actions = generate_actions_for_sum_length_3(s)
+				all_actions.extend(new_actions)
+			elif len(s) == 4:
+				new_actions = generate_actions_for_sum_length_4(s)
+				all_actions.extend(new_actions)
+		logging.info("Actions have been generated.")
+		writer_util.export_all_possible_actions(num, all_actions)
+
+def generate_actions_for_sum_length_1(s):
+	actions = []
+	action_row = [np.zeros(7)] * 7
+	action = np.array(action_row)
+	for i in range(7):
+		for j in range(7):
+			current_action = copy.deepcopy(action)
+			current_action[i][j] = s[0]
+			actions.append(current_action)
+	return actions
+
+def generate_actions_for_sum_length_2(s):
+	actions = []
+	action_row = [np.zeros(7)] * 7
+	action = np.array(action_row)
+	for i in range(7):
+		for j in range(7):
+			for k in range(7):
+				for l in range(7):
+					if index_pairs_are_not_equal([[i, j], [k, l]]):
+						current_action = copy.deepcopy(action)
+						current_action[i][j] = s[0]
+						current_action[k][l] = s[1]
+						actions.append(current_action)
+	return actions
+
+def generate_actions_for_sum_length_3(s):
+	actions = []
+	action_row = [np.zeros(7)] * 7
+	action = np.array(action_row)
+	for i in range(7):
+		for j in range(7):
+			for k in range(7):
+				for l in range(7):
+					for m in range(7):
+						for n in range(7):
+							if index_pairs_are_not_equal([[i, j], [k, l], [m, n]]):
+								current_action = copy.deepcopy(action)
+								current_action[i][j] = s[0]
+								current_action[k][l] = s[1]
+								current_action[m][n] = s[2]
+								actions.append(current_action)
+	return actions
+
+def generate_actions_for_sum_length_4(s):
+	actions = []
+	action_row = [np.zeros(7)] * 7
+	action = np.array(action_row)
+	for i in range(7):
+		for j in range(7):
+			for k in range(7):
+				for l in range(7):
+					for m in range(7):
+						for n in range(7):
+							for o in range(7):
+								for p in range(7):
+									if index_pairs_are_not_equal([[i, j], [k, l], [m, n], [o, p]]):
+										current_action = copy.deepcopy(action)
+										current_action[i][j] = s[0]
+										current_action[k][l] = s[1]
+										current_action[m][n] = s[2]
+										current_action[o][p] = s[2]
+										actions.append(current_action)
+	return actions
+
+def find_all_unique_sums_to_n(n):
+	beginning, middle, end = [0], list(range(1, n)), [n]
+	splits = (d for i in range(n) for d in combinations(middle, i))
+	list_of_sums = (list(map(sub, chain(split, end), chain(beginning, split))) for split in splits)
+	unique_list_of_sums = get_unique_list_of_lists(list_of_sums)
+	return unique_list_of_sums
+
+def get_unique_list_of_lists(a_list):
+	unique_list_of_lists = []
+	for l in a_list:
+		l.sort()
+		if l not in unique_list_of_lists:
+			unique_list_of_lists.append(l)
+	return unique_list_of_lists
+
+def indices_are_not_equal(indices):
+	if len(indices) != len(set(indices)):
+		return False 
+	return True
+
+def index_pairs_are_not_equal(index_pairs):
+	for pair in index_pairs:
+		if index_pairs.count(pair) > 1:
+			return False
+	return True
+
+def generate_all_possible_removal_situations(engine_subtype):
+	logging.info("Generating all possible removal situations for the " + engine_subtype + "...")
+
+	removals_info = data.removals_info[engine_subtype]
+
+	num_different_removals_non_hubs = removals_info['MAX_NUM_REMOVALS_MONTHLY_NON_HUBS']
+	if num_different_removals_non_hubs not in [0, 1, 2]:
+		raise Exception("This program cannot handle generating all removal situations for non-hub locations having more than 2 total removals. Make sure MAX_NUM_REMOVALS_MONTHLY_NON_HUBS is set to 0, 1, or 2.")
+	
+	if removals_info['MAX_NUM_REMOVALS_MONTHLY_TOTAL'] > 10:
+		raise Exception("This program cannot handle generating all removal situations for more than 10 total removals. Make sure MAX_NUM_REMOVALS_MONTHLY_TOTAL is set to a value between 1 and 10.")
 
 	num_allowed_at_hubs = find_num_occurrences_of_max_removals_for_hubs([
 		removals_info['MAX_NUM_REMOVALS_MONTHLY_ATL'],
@@ -20,15 +231,22 @@ def find_all_removal_situations(engine_subtype, removals_info):
 		removals_info['MAX_NUM_REMOVALS_MONTHLY_SEA'],
 		removals_info['MAX_NUM_REMOVALS_MONTHLY_SLC']])
 
-	num_different_removals_non_hubs = 1
-	if removals_info['MAX_NUM_REMOVALS_MONTHLY_NON_HUBS'] == 2:
-		num_different_removals_non_hubs = 2
-	num_different_removals_hubs = sum(num_allowed_at_hubs.values()) - (num_allowed_at_hubs[0] if 0 in num_allowed_at_hubs else 0)
-
-	ranges = find_ranges_of_num_removal_values_valid_at_hubs(num_allowed_at_hubs)
-
+	logging.info(engine_subtype + " monthly removal information:")
+	logging.info("Expected AOS cost: " + str(data.aos_cost[engine_subtype]))
 	max_num_removals_total = removals_info['MAX_NUM_REMOVALS_MONTHLY_TOTAL']
+	logging.info("Maximum total number of removals: " + str(max_num_removals_total))
 	max_removals_non_hubs = removals_info['MAX_NUM_REMOVALS_MONTHLY_NON_HUBS']
+	logging.info("Maximum number of removals by location: ATL: " + str(removals_info['MAX_NUM_REMOVALS_MONTHLY_ATL']) 
+		+ ", CVG: " + str(removals_info['MAX_NUM_REMOVALS_MONTHLY_CVG']) 
+		+ ", DTW: " + str(removals_info['MAX_NUM_REMOVALS_MONTHLY_DTW']) 
+		+ ", LAX: " + str(removals_info['MAX_NUM_REMOVALS_MONTHLY_LAX']) 
+		+ ", MSP: " + str(removals_info['MAX_NUM_REMOVALS_MONTHLY_MSP']) 
+		+ ", SEA: " + str(removals_info['MAX_NUM_REMOVALS_MONTHLY_SEA']) 
+		+ ", SLC: " + str(removals_info['MAX_NUM_REMOVALS_MONTHLY_SLC'])
+		+ ", NON-HUBS: " + str(max_removals_non_hubs))
+
+	num_different_removals_hubs = sum(num_allowed_at_hubs.values()) - (num_allowed_at_hubs[0] if 0 in num_allowed_at_hubs else 0)
+	ranges = find_ranges_of_num_removal_values_valid_at_hubs(num_allowed_at_hubs)
 	max_allowed = find_max_removals_allowed(num_allowed_at_hubs, max_removals_non_hubs)
 
 	removal_sums = {}
@@ -48,6 +266,8 @@ def find_all_removal_situations(engine_subtype, removals_info):
 	removals_generator.generate_all_removal_situations()
 
 def find_num_occurrences_of_max_removals_for_hubs(max_num_removals_at_hubs):
+	if max(max_num_removals_at_hubs) > 10:
+		raise Exception("This program cannot handle generating all removal situations for more than 10 removals happening at any hub location. Make sure MAX_NUM_REMOVALS_MONTHLY for each hub is set to a value between 0 and 10.")
 	max_num_removals_at_hubs_set = set(max_num_removals_at_hubs)
 	unique_max_num_removals_at_hubs = list(max_num_removals_at_hubs_set)
 	num_allowed_at_hubs = {}
@@ -301,9 +521,7 @@ class RemovalsGenerator:
 
 	def __init__(self, engine_subtype, removals_info, removal_sums, ranges):
 		logging.info("Initializing RemovalsGenerator for the " + engine_subtype + " engine...")
-
 		self.engine_subtype = engine_subtype
-		
 		self.max_removals_ATL = removals_info['MAX_NUM_REMOVALS_MONTHLY_ATL']
 		self.max_removals_CVG = removals_info['MAX_NUM_REMOVALS_MONTHLY_CVG']
 		self.max_removals_DTW = removals_info['MAX_NUM_REMOVALS_MONTHLY_DTW']
@@ -311,53 +529,29 @@ class RemovalsGenerator:
 		self.max_removals_MSP = removals_info['MAX_NUM_REMOVALS_MONTHLY_MSP']
 		self.max_removals_SEA = removals_info['MAX_NUM_REMOVALS_MONTHLY_SEA']
 		self.max_removals_SLC = removals_info['MAX_NUM_REMOVALS_MONTHLY_SLC']
-		
-		self.max_removals_hubs_dict = {
-			'ATL': self.max_removals_ATL, 
-			'CVG': self.max_removals_CVG,
-			'DTW': self.max_removals_DTW,
-			'LAX': self.max_removals_LAX,
-			'MSP': self.max_removals_MSP,
-			'SEA': self.max_removals_SEA,
-			'SLC': self.max_removals_SLC}
-
-		self.max_removals_hubs_list = [self.max_removals_ATL, self.max_removals_CVG, self.max_removals_DTW,
-			self.max_removals_LAX, self.max_removals_MSP, self.max_removals_SEA, self.max_removals_SLC]
-
+		self.max_removals_hubs_dict = {'ATL': self.max_removals_ATL, 'CVG': self.max_removals_CVG, 'DTW': self.max_removals_DTW, 'LAX': self.max_removals_LAX, 'MSP': self.max_removals_MSP, 'SEA': self.max_removals_SEA, 'SLC': self.max_removals_SLC}
+		self.max_removals_hubs_list = [self.max_removals_ATL, self.max_removals_CVG, self.max_removals_DTW, self.max_removals_LAX, self.max_removals_MSP, self.max_removals_SEA, self.max_removals_SLC]
 		self.max_removals_non_hubs = removals_info['MAX_NUM_REMOVALS_MONTHLY_NON_HUBS']
 		self.max_different_removals_hubs = 7 - self.max_removals_hubs_list.count(0)
 		self.max_removals_total = removals_info['MAX_NUM_REMOVALS_MONTHLY_TOTAL']
-		
 		self.removal_sums = removal_sums
-
 		self.ranges = ranges
-
-		self.indeces_where_removals_should_not_occur = []
-		self.find_indeces_where_removals_should_not_occur()
-
-		self.num_all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 
-			24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 
-			48, 49, 50, 51, 52]
+		self.indices_where_removals_should_not_occur = []
+		self.find_indices_where_removals_should_not_occur()
+		self.num_all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
 		self.num_hubs = [0, 1, 2, 3, 4, 5, 6]
-		self.num_non_hubs = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 
-			28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 
-			52]
-		self.remove_indeces_from_lists_where_removals_should_not_occur()
-
-		self.valid_indeces_for_ranges = {}
-		self.find_indeces_for_ranges()
-
+		self.num_non_hubs = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+		self.remove_indices_from_lists_where_removals_should_not_occur()
+		self.valid_indices_for_ranges = {}
+		self.find_indices_for_ranges()
 		self.all_perms = []
 		self.zero_list_all = [0] * 53
-
 		self.num_all_2_removals = []
 		self.find_all_values_where_2_removals_can_occur()
-
-		self.indeces_to_iterate_for_current_values = []
-		self.indeces_to_iterate_for_current_values_again = []
+		self.indices_to_iterate_for_current_values = []
+		self.indices_to_iterate_for_current_values_again = []
 		self.will_need_to_iterate_twice = False
 		self.more_than_one_value_must_occur_at_non_hubs = False
-
 		data.all_possible_removal_situations[self.engine_subtype] = []
 
 	def find_all_values_where_2_removals_can_occur(self):
@@ -365,34 +559,34 @@ class RemovalsGenerator:
 			current_min = r[0]
 			current_max = r[1]
 			if (2 >= current_min) and (2 <= current_max):
-				self.num_all_2_removals = self.valid_indeces_for_ranges[str(r)][:]
+				self.num_all_2_removals = self.valid_indices_for_ranges[str(r)][:]
 				self.num_all_2_removals.extend(self.num_non_hubs)
 
-	def find_indeces_where_removals_should_not_occur(self):
+	def find_indices_where_removals_should_not_occur(self):
 		for index in range(7):
 			if self.max_removals_hubs_list[index] == 0:
-				self.indeces_where_removals_should_not_occur.append(index)
+				self.indices_where_removals_should_not_occur.append(index)
 
-	def remove_indeces_from_lists_where_removals_should_not_occur(self):
-		for index in sorted(self.indeces_where_removals_should_not_occur, reverse=True):
+	def remove_indices_from_lists_where_removals_should_not_occur(self):
+		for index in sorted(self.indices_where_removals_should_not_occur, reverse=True):
 			del self.num_all[index]
 			del self.num_hubs[index]
 
-	def find_indeces_for_ranges(self):
+	def find_indices_for_ranges(self):
 		for r in self.ranges:
-			self.valid_indeces_for_ranges[str(r)] = []
+			self.valid_indices_for_ranges[str(r)] = []
 		for i in range(len(self.max_removals_hubs_list)):
 			hub_max_removals = self.max_removals_hubs_list[i]
 			for r in self.ranges:
 				current_min = r[0]
 				if hub_max_removals >= current_min:
-					self.valid_indeces_for_ranges[str(r)].append(i)
+					self.valid_indices_for_ranges[str(r)].append(i)
 
 	def generate_all_removal_situations(self):
 		for num_removals, all_sums in self.removal_sums.items():
 			current_num_removals = num_removals
 			for values in all_sums:
-				self.find_indeces_to_iterate(values)
+				self.find_indices_to_iterate(values)
 				if len(values) == 1:
 					self.one_value(values)
 				elif len(values) == 2:
@@ -411,15 +605,16 @@ class RemovalsGenerator:
 					self.eight_values(values)
 				elif len(values) == 9:
 					self.nine_values(values)
+		logging.info("All removal situations for "  + self.engine_subtype + " have been generated.")
 		writer_util.export_all_possible_removal_situations(
 			filepath='data_to_read/' + self.engine_subtype + '/' + self.engine_subtype + '_all_possible_removal_situations.csv',
 			engine_subtype=self.engine_subtype,
 			all_possible_removal_situations=data.all_possible_removal_situations[self.engine_subtype])
 
-	def indeces_not_equal(self, list_of_indeces):
-		set_of_indeces = set(list_of_indeces)
-		list_of_set_of_indeces = list(set_of_indeces)
-		if len(list_of_set_of_indeces) != len(list_of_indeces):
+	def indices_not_equal(self, list_of_indices):
+		set_of_indices = set(list_of_indices)
+		list_of_set_of_indices = list(set_of_indices)
+		if len(list_of_set_of_indices) != len(list_of_indices):
 			return False
 		return True
 
@@ -430,57 +625,52 @@ class RemovalsGenerator:
 		return unique_perms_list
 
 	def one_value(self, values):
-		logging.info('Finding permutations for: ' + str(values))
 		perms = []
-		for i in self.indeces_to_iterate_for_current_values[0]:
+		for i in self.indices_to_iterate_for_current_values[0]:
 			current_list = self.zero_list_all[:]
 			current_list[i] = values[0]
 			perms.append(current_list)
 		unique_perms_list = self.make_perms_unique_and_add_to_all_perms(perms)
 		num_unique_perms = len(unique_perms_list)
-		logging.info(str(num_unique_perms) + ' permutations found.')
 
 	def two_values(self, values):
-		logging.info('Finding permutations for: ' + str(values))
 		perms = []
-		for i in self.indeces_to_iterate_for_current_values[0]:
-			for j in self.indeces_to_iterate_for_current_values[1]:
-				if self.indeces_not_equal([i, j]):
+		for i in self.indices_to_iterate_for_current_values[0]:
+			for j in self.indices_to_iterate_for_current_values[1]:
+				if self.indices_not_equal([i, j]):
 					current_list = self.zero_list_all[:]
 					current_list[i] = values[0]
 					current_list[j] = values[1]
 					perms.append(current_list)
 		unique_perms_list = self.make_perms_unique_and_add_to_all_perms(perms)
 		num_unique_perms = len(unique_perms_list)
-		logging.info(str(num_unique_perms) + ' permutations found.')
 
 	def three_values(self, values):
-		logging.info('Finding permutations for: ' + str(values))
 		perms = []
 		if self.will_need_to_iterate_twice:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						if self.indeces_not_equal([i, j, k]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						if self.indices_not_equal([i, j, k]):
 							current_list = self.zero_list_all[:]
 							current_list[i] = values[0]
 							current_list[j] = values[1]
 							current_list[k] = values[2]
 							perms.append(current_list)
-			for i in self.indeces_to_iterate_for_current_values_again[0]:
-				for j in self.indeces_to_iterate_for_current_values_again[1]:
-					for k in self.indeces_to_iterate_for_current_values_again[2]:
-						if self.indeces_not_equal([i, j, k]):
+			for i in self.indices_to_iterate_for_current_values_again[0]:
+				for j in self.indices_to_iterate_for_current_values_again[1]:
+					for k in self.indices_to_iterate_for_current_values_again[2]:
+						if self.indices_not_equal([i, j, k]):
 							current_list = self.zero_list_all[:]
 							current_list[i] = values[0]
 							current_list[j] = values[1]
 							current_list[k] = values[2]
 							perms.append(current_list)
 		else:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						if self.indeces_not_equal([i, j, k]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						if self.indices_not_equal([i, j, k]):
 							current_list = self.zero_list_all[:]
 							current_list[i] = values[0]
 							current_list[j] = values[1]
@@ -488,28 +678,26 @@ class RemovalsGenerator:
 							perms.append(current_list)
 		unique_perms_list = self.make_perms_unique_and_add_to_all_perms(perms)
 		num_unique_perms = len(unique_perms_list)
-		logging.info(str(num_unique_perms) + ' permutations found.')
 
 	def four_values(self, values):
-		logging.info('Finding permutations for: ' + str(values))
 		perms = []
 		if self.will_need_to_iterate_twice:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							if self.indeces_not_equal([i, j, k, l]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							if self.indices_not_equal([i, j, k, l]):
 								current_list = self.zero_list_all[:]
 								current_list[i] = values[0]
 								current_list[j] = values[1]
 								current_list[k] = values[2]
 								current_list[l] = values[3]
 								perms.append(current_list)
-			for i in self.indeces_to_iterate_for_current_values_again[0]:
-				for j in self.indeces_to_iterate_for_current_values_again[1]:
-					for k in self.indeces_to_iterate_for_current_values_again[2]:
-						for l in self.indeces_to_iterate_for_current_values_again[3]:
-							if self.indeces_not_equal([i, j, k, l]):
+			for i in self.indices_to_iterate_for_current_values_again[0]:
+				for j in self.indices_to_iterate_for_current_values_again[1]:
+					for k in self.indices_to_iterate_for_current_values_again[2]:
+						for l in self.indices_to_iterate_for_current_values_again[3]:
+							if self.indices_not_equal([i, j, k, l]):
 								current_list = self.zero_list_all[:]
 								current_list[i] = values[0]
 								current_list[j] = values[1]
@@ -517,11 +705,11 @@ class RemovalsGenerator:
 								current_list[l] = values[3]
 								perms.append(current_list)
 		else:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							if self.indeces_not_equal([i, j, k, l]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							if self.indices_not_equal([i, j, k, l]):
 								current_list = self.zero_list_all[:]
 								current_list[i] = values[0]
 								current_list[j] = values[1]
@@ -530,18 +718,16 @@ class RemovalsGenerator:
 								perms.append(current_list)
 		unique_perms_list = self.make_perms_unique_and_add_to_all_perms(perms)
 		num_unique_perms = len(unique_perms_list)
-		logging.info(str(num_unique_perms) + ' permutations found.')
 
 	def five_values(self, values):
-		logging.info('Finding permutations for: ' + str(values))
 		perms = []
 		if self.will_need_to_iterate_twice:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							for m in self.indeces_to_iterate_for_current_values[4]:
-								if self.indeces_not_equal([i, j, k, l, m]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							for m in self.indices_to_iterate_for_current_values[4]:
+								if self.indices_not_equal([i, j, k, l, m]):
 									current_list = self.zero_list_all[:]
 									current_list[i] = values[0]
 									current_list[j] = values[1]
@@ -549,12 +735,12 @@ class RemovalsGenerator:
 									current_list[l] = values[3]
 									current_list[m] = values[4]
 									perms.append(current_list)
-			for i in self.indeces_to_iterate_for_current_values_again[0]:
-				for j in self.indeces_to_iterate_for_current_values_again[1]:
-					for k in self.indeces_to_iterate_for_current_values_again[2]:
-						for l in self.indeces_to_iterate_for_current_values_again[3]:
-							for m in self.indeces_to_iterate_for_current_values_again[4]:
-								if self.indeces_not_equal([i, j, k, l, m]):
+			for i in self.indices_to_iterate_for_current_values_again[0]:
+				for j in self.indices_to_iterate_for_current_values_again[1]:
+					for k in self.indices_to_iterate_for_current_values_again[2]:
+						for l in self.indices_to_iterate_for_current_values_again[3]:
+							for m in self.indices_to_iterate_for_current_values_again[4]:
+								if self.indices_not_equal([i, j, k, l, m]):
 									current_list = self.zero_list_all[:]
 									current_list[i] = values[0]
 									current_list[j] = values[1]
@@ -563,12 +749,12 @@ class RemovalsGenerator:
 									current_list[m] = values[4]
 									perms.append(current_list)
 		else:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							for m in self.indeces_to_iterate_for_current_values[4]:
-								if self.indeces_not_equal([i, j, k, l, m]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							for m in self.indices_to_iterate_for_current_values[4]:
+								if self.indices_not_equal([i, j, k, l, m]):
 									current_list = self.zero_list_all[:]
 									current_list[i] = values[0]
 									current_list[j] = values[1]
@@ -578,19 +764,17 @@ class RemovalsGenerator:
 									perms.append(current_list)
 		unique_perms_list = self.make_perms_unique_and_add_to_all_perms(perms)
 		num_unique_perms = len(unique_perms_list)
-		logging.info(str(num_unique_perms) + ' permutations found.')
 
 	def six_values(self, values):
-		logging.info('Finding permutations for: ' + str(values))
 		perms = []
 		if self.will_need_to_iterate_twice:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							for m in self.indeces_to_iterate_for_current_values[4]:
-								for n in self.indeces_to_iterate_for_current_values[5]:
-									if self.indeces_not_equal([i, j, k, l, m, n]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							for m in self.indices_to_iterate_for_current_values[4]:
+								for n in self.indices_to_iterate_for_current_values[5]:
+									if self.indices_not_equal([i, j, k, l, m, n]):
 										current_list = self.zero_list_all[:]
 										current_list[i] = values[0]
 										current_list[j] = values[1]
@@ -599,13 +783,13 @@ class RemovalsGenerator:
 										current_list[m] = values[4]
 										current_list[n] = values[5]
 										perms.append(current_list)
-			for i in self.indeces_to_iterate_for_current_values_again[0]:
-				for j in self.indeces_to_iterate_for_current_values_again[1]:
-					for k in self.indeces_to_iterate_for_current_values_again[2]:
-						for l in self.indeces_to_iterate_for_current_values_again[3]:
-							for m in self.indeces_to_iterate_for_current_values_again[4]:
-								for n in self.indeces_to_iterate_for_current_values_again[5]:
-									if self.indeces_not_equal([i, j, k, l, m, n]):
+			for i in self.indices_to_iterate_for_current_values_again[0]:
+				for j in self.indices_to_iterate_for_current_values_again[1]:
+					for k in self.indices_to_iterate_for_current_values_again[2]:
+						for l in self.indices_to_iterate_for_current_values_again[3]:
+							for m in self.indices_to_iterate_for_current_values_again[4]:
+								for n in self.indices_to_iterate_for_current_values_again[5]:
+									if self.indices_not_equal([i, j, k, l, m, n]):
 										current_list = self.zero_list_all[:]
 										current_list[i] = values[0]
 										current_list[j] = values[1]
@@ -615,13 +799,13 @@ class RemovalsGenerator:
 										current_list[n] = values[5]
 										perms.append(current_list)
 		else:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							for m in self.indeces_to_iterate_for_current_values[4]:
-								for n in self.indeces_to_iterate_for_current_values[5]:
-									if self.indeces_not_equal([i, j, k, l, m, n]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							for m in self.indices_to_iterate_for_current_values[4]:
+								for n in self.indices_to_iterate_for_current_values[5]:
+									if self.indices_not_equal([i, j, k, l, m, n]):
 										current_list = self.zero_list_all[:]
 										current_list[i] = values[0]
 										current_list[j] = values[1]
@@ -632,20 +816,18 @@ class RemovalsGenerator:
 										perms.append(current_list)
 		unique_perms_list = self.make_perms_unique_and_add_to_all_perms(perms)
 		num_unique_perms = len(unique_perms_list)
-		logging.info(str(num_unique_perms) + ' permutations found.')
 
 	def seven_values(self, values):
-		logging.info('Finding permutations for: ' + str(values))
 		perms = []
 		if self.will_need_to_iterate_twice:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							for m in self.indeces_to_iterate_for_current_values[4]:
-								for n in self.indeces_to_iterate_for_current_values[5]:
-									for o in self.indeces_to_iterate_for_current_values[6]:
-										if self.indeces_not_equal([i, j, k, l, m, n, o]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							for m in self.indices_to_iterate_for_current_values[4]:
+								for n in self.indices_to_iterate_for_current_values[5]:
+									for o in self.indices_to_iterate_for_current_values[6]:
+										if self.indices_not_equal([i, j, k, l, m, n, o]):
 											current_list = self.zero_list_all[:]
 											current_list[i] = values[0]
 											current_list[j] = values[1]
@@ -655,14 +837,14 @@ class RemovalsGenerator:
 											current_list[n] = values[5]
 											current_list[o] = values[6]
 											perms.append(current_list)
-			for i in self.indeces_to_iterate_for_current_values_again[0]:
-				for j in self.indeces_to_iterate_for_current_values_again[1]:
-					for k in self.indeces_to_iterate_for_current_values_again[2]:
-						for l in self.indeces_to_iterate_for_current_values_again[3]:
-							for m in self.indeces_to_iterate_for_current_values_again[4]:
-								for n in self.indeces_to_iterate_for_current_values_again[5]:
-									for o in self.indeces_to_iterate_for_current_values_again[6]:
-										if self.indeces_not_equal([i, j, k, l, m, n, o]):
+			for i in self.indices_to_iterate_for_current_values_again[0]:
+				for j in self.indices_to_iterate_for_current_values_again[1]:
+					for k in self.indices_to_iterate_for_current_values_again[2]:
+						for l in self.indices_to_iterate_for_current_values_again[3]:
+							for m in self.indices_to_iterate_for_current_values_again[4]:
+								for n in self.indices_to_iterate_for_current_values_again[5]:
+									for o in self.indices_to_iterate_for_current_values_again[6]:
+										if self.indices_not_equal([i, j, k, l, m, n, o]):
 											current_list = self.zero_list_all[:]
 											current_list[i] = values[0]
 											current_list[j] = values[1]
@@ -673,14 +855,14 @@ class RemovalsGenerator:
 											current_list[o] = values[6]
 											perms.append(current_list)
 		else:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							for m in self.indeces_to_iterate_for_current_values[4]:
-								for n in self.indeces_to_iterate_for_current_values[5]:
-									for o in self.indeces_to_iterate_for_current_values[6]:
-										if self.indeces_not_equal([i, j, k, l, m, n, o]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							for m in self.indices_to_iterate_for_current_values[4]:
+								for n in self.indices_to_iterate_for_current_values[5]:
+									for o in self.indices_to_iterate_for_current_values[6]:
+										if self.indices_not_equal([i, j, k, l, m, n, o]):
 											current_list = self.zero_list_all[:]
 											current_list[i] = values[0]
 											current_list[j] = values[1]
@@ -692,21 +874,19 @@ class RemovalsGenerator:
 											perms.append(current_list)
 		unique_perms_list = self.make_perms_unique_and_add_to_all_perms(perms)
 		num_unique_perms = len(unique_perms_list)
-		logging.info(str(num_unique_perms) + ' permutations found.')
 
 	def eight_values(self, values):
-		logging.info('Finding permutations for: ' + str(values))
 		perms = []
 		if self.will_need_to_iterate_twice:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							for m in self.indeces_to_iterate_for_current_values[4]:
-								for n in self.indeces_to_iterate_for_current_values[5]:
-									for o in self.indeces_to_iterate_for_current_values[6]:
-										for p in self.indeces_to_iterate_for_current_values[7]:
-											if self.indeces_not_equal([i, j, k, l, m, n, o, p]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							for m in self.indices_to_iterate_for_current_values[4]:
+								for n in self.indices_to_iterate_for_current_values[5]:
+									for o in self.indices_to_iterate_for_current_values[6]:
+										for p in self.indices_to_iterate_for_current_values[7]:
+											if self.indices_not_equal([i, j, k, l, m, n, o, p]):
 												current_list = self.zero_list_all[:]
 												current_list[i] = values[0]
 												current_list[j] = values[1]
@@ -717,15 +897,15 @@ class RemovalsGenerator:
 												current_list[o] = values[6]
 												current_list[p] = values[7]
 												perms.append(current_list)
-			for i in self.indeces_to_iterate_for_current_values_again[0]:
-				for j in self.indeces_to_iterate_for_current_values_again[1]:
-					for k in self.indeces_to_iterate_for_current_values_again[2]:
-						for l in self.indeces_to_iterate_for_current_values_again[3]:
-							for m in self.indeces_to_iterate_for_current_values_again[4]:
-								for n in self.indeces_to_iterate_for_current_values_again[5]:
-									for o in self.indeces_to_iterate_for_current_values_again[6]:
-										for p in self.indeces_to_iterate_for_current_values_again[7]:
-											if self.indeces_not_equal([i, j, k, l, m, n, o, p]):
+			for i in self.indices_to_iterate_for_current_values_again[0]:
+				for j in self.indices_to_iterate_for_current_values_again[1]:
+					for k in self.indices_to_iterate_for_current_values_again[2]:
+						for l in self.indices_to_iterate_for_current_values_again[3]:
+							for m in self.indices_to_iterate_for_current_values_again[4]:
+								for n in self.indices_to_iterate_for_current_values_again[5]:
+									for o in self.indices_to_iterate_for_current_values_again[6]:
+										for p in self.indices_to_iterate_for_current_values_again[7]:
+											if self.indices_not_equal([i, j, k, l, m, n, o, p]):
 												current_list = self.zero_list_all[:]
 												current_list[i] = values[0]
 												current_list[j] = values[1]
@@ -737,15 +917,15 @@ class RemovalsGenerator:
 												current_list[p] = values[7]
 												perms.append(current_list)
 		else:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							for m in self.indeces_to_iterate_for_current_values[4]:
-								for n in self.indeces_to_iterate_for_current_values[5]:
-									for o in self.indeces_to_iterate_for_current_values[6]:
-										for p in self.indeces_to_iterate_for_current_values[7]:
-											if self.indeces_not_equal([i, j, k, l, m, n, o, p]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							for m in self.indices_to_iterate_for_current_values[4]:
+								for n in self.indices_to_iterate_for_current_values[5]:
+									for o in self.indices_to_iterate_for_current_values[6]:
+										for p in self.indices_to_iterate_for_current_values[7]:
+											if self.indices_not_equal([i, j, k, l, m, n, o, p]):
 												current_list = self.zero_list_all[:]
 												current_list[i] = values[0]
 												current_list[j] = values[1]
@@ -758,22 +938,20 @@ class RemovalsGenerator:
 												perms.append(current_list)
 		unique_perms_list = self.make_perms_unique_and_add_to_all_perms(perms)
 		num_unique_perms = len(unique_perms_list)
-		logging.info(str(num_unique_perms) + ' permutations found.')
 
 	def nine_values(self, values):
-		logging.info('Finding permutations for: ' + str(values))
 		perms = []
 		if self.will_need_to_iterate_twice:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							for m in self.indeces_to_iterate_for_current_values[4]:
-								for n in self.indeces_to_iterate_for_current_values[5]:
-									for o in self.indeces_to_iterate_for_current_values[6]:
-										for p in self.indeces_to_iterate_for_current_values[7]:
-											for q in self.indeces_to_iterate_for_current_values[8]:
-												if self.indeces_not_equal([i, j, k, l, m, n, o, p, q]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							for m in self.indices_to_iterate_for_current_values[4]:
+								for n in self.indices_to_iterate_for_current_values[5]:
+									for o in self.indices_to_iterate_for_current_values[6]:
+										for p in self.indices_to_iterate_for_current_values[7]:
+											for q in self.indices_to_iterate_for_current_values[8]:
+												if self.indices_not_equal([i, j, k, l, m, n, o, p, q]):
 													current_list = self.zero_list_all[:]
 													current_list[i] = values[0]
 													current_list[j] = values[1]
@@ -785,16 +963,16 @@ class RemovalsGenerator:
 													current_list[p] = values[7]
 													current_list[q] = values[8]
 													perms.append(current_list)
-			for i in self.indeces_to_iterate_for_current_values_again[0]:
-				for j in self.indeces_to_iterate_for_current_values_again[1]:
-					for k in self.indeces_to_iterate_for_current_values_again[2]:
-						for l in self.indeces_to_iterate_for_current_values_again[3]:
-							for m in self.indeces_to_iterate_for_current_values_again[4]:
-								for n in self.indeces_to_iterate_for_current_values_again[5]:
-									for o in self.indeces_to_iterate_for_current_values_again[6]:
-										for p in self.indeces_to_iterate_for_current_values_again[7]:
-											for q in self.indeces_to_iterate_for_current_values_again[8]:
-												if self.indeces_not_equal([i, j, k, l, m, n, o, p, q]):
+			for i in self.indices_to_iterate_for_current_values_again[0]:
+				for j in self.indices_to_iterate_for_current_values_again[1]:
+					for k in self.indices_to_iterate_for_current_values_again[2]:
+						for l in self.indices_to_iterate_for_current_values_again[3]:
+							for m in self.indices_to_iterate_for_current_values_again[4]:
+								for n in self.indices_to_iterate_for_current_values_again[5]:
+									for o in self.indices_to_iterate_for_current_values_again[6]:
+										for p in self.indices_to_iterate_for_current_values_again[7]:
+											for q in self.indices_to_iterate_for_current_values_again[8]:
+												if self.indices_not_equal([i, j, k, l, m, n, o, p, q]):
 													current_list = self.zero_list_all[:]
 													current_list[i] = values[0]
 													current_list[j] = values[1]
@@ -807,16 +985,16 @@ class RemovalsGenerator:
 													current_list[q] = values[8]
 													perms.append(current_list)
 		else:
-			for i in self.indeces_to_iterate_for_current_values[0]:
-				for j in self.indeces_to_iterate_for_current_values[1]:
-					for k in self.indeces_to_iterate_for_current_values[2]:
-						for l in self.indeces_to_iterate_for_current_values[3]:
-							for m in self.indeces_to_iterate_for_current_values[4]:
-								for n in self.indeces_to_iterate_for_current_values[5]:
-									for o in self.indeces_to_iterate_for_current_values[6]:
-										for p in self.indeces_to_iterate_for_current_values[7]:
-											for q in self.indeces_to_iterate_for_current_values[8]:
-												if self.indeces_not_equal([i, j, k, l, m, n, o, p, q]):
+			for i in self.indices_to_iterate_for_current_values[0]:
+				for j in self.indices_to_iterate_for_current_values[1]:
+					for k in self.indices_to_iterate_for_current_values[2]:
+						for l in self.indices_to_iterate_for_current_values[3]:
+							for m in self.indices_to_iterate_for_current_values[4]:
+								for n in self.indices_to_iterate_for_current_values[5]:
+									for o in self.indices_to_iterate_for_current_values[6]:
+										for p in self.indices_to_iterate_for_current_values[7]:
+											for q in self.indices_to_iterate_for_current_values[8]:
+												if self.indices_not_equal([i, j, k, l, m, n, o, p, q]):
 													current_list = self.zero_list_all[:]
 													current_list[i] = values[0]
 													current_list[j] = values[1]
@@ -830,11 +1008,10 @@ class RemovalsGenerator:
 													perms.append(current_list)
 		unique_perms_list = self.make_perms_unique_and_add_to_all_perms(perms)
 		num_unique_perms = len(unique_perms_list)
-		logging.info(str(num_unique_perms) + ' permutations found.')
 
 	def reset_values_to_sum_variables(self):
-		self.indeces_to_iterate_for_current_values = []
-		self.indeces_to_iterate_for_current_values_again = []
+		self.indices_to_iterate_for_current_values = []
+		self.indices_to_iterate_for_current_values_again = []
 		self.will_need_to_iterate_twice = False
 		self.more_than_one_value_must_occur_at_non_hubs = False
 
@@ -844,36 +1021,36 @@ class RemovalsGenerator:
 	def values_to_sum_contain_less_than_two_ones(self, values):
 		return (values.count(1) < 2)
 
-	def append_to_beginning_of_indeces_to_iterate_for_current_values(self, list_of_lists_to_append):
+	def append_to_beginning_of_indices_to_iterate_for_current_values(self, list_of_lists_to_append):
 		for a_list in list_of_lists_to_append:
-			self.indeces_to_iterate_for_current_values.append(a_list)
+			self.indices_to_iterate_for_current_values.append(a_list)
 
-	def append_to_beginning_of_indeces_to_iterate_for_current_values_again(self, list_of_lists_to_append):
+	def append_to_beginning_of_indices_to_iterate_for_current_values_again(self, list_of_lists_to_append):
 		for a_list in list_of_lists_to_append:
-			self.indeces_to_iterate_for_current_values_again.append(a_list)
+			self.indices_to_iterate_for_current_values_again.append(a_list)
 
-	def append_to_end_of_indeces_to_iterate_for_current_values(self, values_to_edit):
+	def append_to_end_of_indices_to_iterate_for_current_values(self, values_to_edit):
 		for value in values_to_edit:
 			for r in self.ranges:
 				current_min = r[0]
 				current_max = r[1]
 				if (value >= current_min) and (value <= current_max):
-					self.indeces_to_iterate_for_current_values.append(self.valid_indeces_for_ranges[str(r)])
+					self.indices_to_iterate_for_current_values.append(self.valid_indices_for_ranges[str(r)])
 
-	def append_to_end_of_indeces_to_iterate_for_current_values_again(self, values_to_edit):
+	def append_to_end_of_indices_to_iterate_for_current_values_again(self, values_to_edit):
 		for value in values_to_edit:
 			for r in self.ranges:
 				current_min = r[0]
 				current_max = r[1]
 				if (value >= current_min) and (value <= current_max):
-					self.indeces_to_iterate_for_current_values_again.append(self.valid_indeces_for_ranges[str(r)])
+					self.indices_to_iterate_for_current_values_again.append(self.valid_indices_for_ranges[str(r)])
 
 	def remove_values_for_which_index_lists_have_been_found(self, values_to_edit, values_to_remove):
 		for value in values_to_remove:
 			values_to_edit.remove(value)
 		return values_to_edit
 
-	def find_indeces_to_iterate(self, values):
+	def find_indices_to_iterate(self, values):
 		self.reset_values_to_sum_variables()
 		values_to_edit = values[:]
 		if self.max_removals_non_hubs == 2:
@@ -882,9 +1059,9 @@ class RemovalsGenerator:
 				if self.values_to_sum_contain_less_than_two_ones(values):
 					raise Exception("Two values must occur at non-hubs to generate permutations for this sum.")
 				else:
-					self.append_to_beginning_of_indeces_to_iterate_for_current_values([self.num_non_hubs, self.num_non_hubs])
+					self.append_to_beginning_of_indices_to_iterate_for_current_values([self.num_non_hubs, self.num_non_hubs])
 					values_to_edit = self.remove_values_for_which_index_lists_have_been_found(values_to_edit, [1, 1])
-					self.append_to_end_of_indeces_to_iterate_for_current_values(values_to_edit)
+					self.append_to_end_of_indices_to_iterate_for_current_values(values_to_edit)
 			else:
 				if values.count(2) > 0:
 					if values.count(1) >= 2: # 2 occurs at least once, 1 occurs at least twice
@@ -897,52 +1074,45 @@ class RemovalsGenerator:
 							list_of_lists_to_append.append(self.num_hubs) # all 1s iterate through hubs only
 						list_of_ones_and_two.append(2)
 						list_of_lists_to_append.append(self.num_non_hubs) # 2 iterates through non-hubs only
-						self.append_to_beginning_of_indeces_to_iterate_for_current_values(list_of_lists_to_append)
+						self.append_to_beginning_of_indices_to_iterate_for_current_values(list_of_lists_to_append)
 						values_to_edit = self.remove_values_for_which_index_lists_have_been_found(values_to_edit, list_of_ones_and_two)
-						self.append_to_end_of_indeces_to_iterate_for_current_values(values_to_edit)
+						self.append_to_end_of_indices_to_iterate_for_current_values(values_to_edit)
 						# second iteration
 						values_to_edit = values[:]
-						self.append_to_beginning_of_indeces_to_iterate_for_current_values_again([self.num_all, self.num_all]) # two 1s iterate through everything
+						self.append_to_beginning_of_indices_to_iterate_for_current_values_again([self.num_all, self.num_all]) # two 1s iterate through everything
 						values_to_edit = self.remove_values_for_which_index_lists_have_been_found(values_to_edit, [1, 1])
-						self.append_to_end_of_indeces_to_iterate_for_current_values_again(values_to_edit)
+						self.append_to_end_of_indices_to_iterate_for_current_values_again(values_to_edit)
 					elif values.count(1) == 1: # 2 occurs at least once, 1 occurs only once
 						self.will_need_to_iterate_twice = True
 						# first iteration
-						self.append_to_beginning_of_indeces_to_iterate_for_current_values([self.num_hubs, self.num_non_hubs])
+						self.append_to_beginning_of_indices_to_iterate_for_current_values([self.num_hubs, self.num_non_hubs])
 						values_to_edit = self.remove_values_for_which_index_lists_have_been_found(values_to_edit, [1, 2])
-						self.append_to_end_of_indeces_to_iterate_for_current_values(values_to_edit)
+						self.append_to_end_of_indices_to_iterate_for_current_values(values_to_edit)
 						# second iteration
 						values_to_edit = values[:]
-						self.append_to_beginning_of_indeces_to_iterate_for_current_values_again([self.num_all])
+						self.append_to_beginning_of_indices_to_iterate_for_current_values_again([self.num_all])
 						values_to_edit = self.remove_values_for_which_index_lists_have_been_found(values_to_edit, [1])
-						self.append_to_end_of_indeces_to_iterate_for_current_values_again(values_to_edit)
+						self.append_to_end_of_indices_to_iterate_for_current_values_again(values_to_edit)
 					elif values.count(1) == 0: # 2 occurs at least once, 1 never occurs
-						self.append_to_beginning_of_indeces_to_iterate_for_current_values([self.num_all_2_removals])
+						self.append_to_beginning_of_indices_to_iterate_for_current_values([self.num_all_2_removals])
 						values_to_edit = self.remove_values_for_which_index_lists_have_been_found(values_to_edit, [2])
-						self.append_to_end_of_indeces_to_iterate_for_current_values(values_to_edit)
+						self.append_to_end_of_indices_to_iterate_for_current_values(values_to_edit)
 				elif values.count(2) == 0:
 					if values.count(1) >= 2: # 2 never occurs, 1 occurs at least twice
-						self.append_to_beginning_of_indeces_to_iterate_for_current_values([self.num_all, self.num_all])
+						self.append_to_beginning_of_indices_to_iterate_for_current_values([self.num_all, self.num_all])
 						values_to_edit = self.remove_values_for_which_index_lists_have_been_found(values_to_edit, [1, 1])
-						self.append_to_end_of_indeces_to_iterate_for_current_values(values_to_edit)
+						self.append_to_end_of_indices_to_iterate_for_current_values(values_to_edit)
 					elif values.count(1) == 1: # 2 never occurs, 1 occurs once
-						self.append_to_beginning_of_indeces_to_iterate_for_current_values([self.num_all])
+						self.append_to_beginning_of_indices_to_iterate_for_current_values([self.num_all])
 						values_to_edit = self.remove_values_for_which_index_lists_have_been_found(values_to_edit, [1])
-						self.append_to_end_of_indeces_to_iterate_for_current_values(values_to_edit)
+						self.append_to_end_of_indices_to_iterate_for_current_values(values_to_edit)
 					elif values.count(1) == 0: # 2 never occurs, 1 never occurs
-						self.append_to_end_of_indeces_to_iterate_for_current_values(values_to_edit)
+						self.append_to_end_of_indices_to_iterate_for_current_values(values_to_edit)
 		else:
 			if values.count(1) > 0: 
-				self.append_to_beginning_of_indeces_to_iterate_for_current_values([self.num_all])
+				self.append_to_beginning_of_indices_to_iterate_for_current_values([self.num_all])
 				values_to_edit = self.remove_values_for_which_index_lists_have_been_found(values_to_edit, [1])
-				self.append_to_end_of_indeces_to_iterate_for_current_values(values_to_edit)
+				self.append_to_end_of_indices_to_iterate_for_current_values(values_to_edit)
 			if values.count(1) == 0:
-				self.append_to_end_of_indeces_to_iterate_for_current_values(values_to_edit)
-
-
-
-
-
-
-
+				self.append_to_end_of_indices_to_iterate_for_current_values(values_to_edit)
 

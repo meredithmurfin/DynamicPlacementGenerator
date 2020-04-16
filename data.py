@@ -41,6 +41,9 @@ def init():
 	global all_possible_states
 	all_possible_states = {}
 
+	global states_by_subtype
+	states_by_subtype = {}
+
 	'''
 	A dictionary that holds all possible actions in the MDP as a list of lists for each engine subtype.
 
@@ -50,6 +53,9 @@ def init():
 	'''
 	global all_possible_actions
 	all_possible_actions = {}
+
+	global actions_by_subtype
+	actions_by_subtype = {}
 
 	'''
 	A dictionary that holds all possible removal situations as a list of lists for each engine subtype.
@@ -78,8 +84,8 @@ def init():
 		'NUM_WORKING_ENGINES': 4,
 		'TOTAL_NUM_ENGINES': 4}, ...}
 	'''
-	global num_engines_info
-	num_engines_info = {}
+	global engines_info
+	engines_info = {}
 
 	'''
 	A dictionary that holds information for the number of removals for each engine subtype.
@@ -108,8 +114,8 @@ def init():
 		'MAX_NUM_REMOVALS_MONTHLY_SLC': 1,
 		'MAX_NUM_REMOVALS_MONTHLY_TOTAL': 2}, ...}
 	'''
-	global num_removals_info
-	num_removals_info = {}
+	global removals_info
+	removals_info = {}
 
 	'''
 	A dictionary that holds the default expected AOS cost for each engine subtype.
@@ -223,6 +229,9 @@ def init():
 
 	global total_RONSRADS_ground_time_by_hub_monthly
 	total_RONSRADS_ground_time_by_hub_monthly = {}
+
+	global need_to_update_removal_info
+	need_to_update_removal_info = {}
 
 
 
