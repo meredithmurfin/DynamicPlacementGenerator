@@ -88,6 +88,11 @@ Doing this will create the following for future use:
 
 ### Subsequent Runs
 
+The `FIRST_RUN` environment variable can be set to FALSE for all future runs.
+```
+export FIRST_RUN=false
+```
+
 Prior to running this program each month, a few files need to be updated.
 
 #### Update Future Flight Information
@@ -136,7 +141,7 @@ This file contains information on expected removals for each engine subtype. Thi
 - Expected maximum number of removals in a month for each specific hub
 - Expected maximum number of removals in a month for all airports excluding hubs
 - Expected AOS cost
-- Whether or not these files were updated from the previous month
+- Whether or not these files were updated from the previous month (if any of the data for a subtype has been updated, make sure to set the UPDATED column value for that row to be TRUE)
 
 Our team based the values on past removal data for each type. We based the maximum number of removals that could happen on data from 2015-2019. We took the maximum that had ever occurred for each and added 1 to it. For example, if no more than 3 removals ever occurred in ATL, we assumed the maximum number of removals that could ever happen would be 4.
 
