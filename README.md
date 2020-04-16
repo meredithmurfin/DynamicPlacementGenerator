@@ -165,7 +165,7 @@ This file contains information on engine numbers for each engine subtype. This w
 - Number of working spare engines currently being stored at each hub
 
 Limitations:
-- The number of current spare engines cannot be less than 1 and cannot be greater than 5
+- The total number of current spare engines cannot be less than 1 and cannot be greater than 5
 
 The purpose of this file is to understand the current state being considered so that the action to take associated with the minimum cost is returned.
 
@@ -185,10 +185,10 @@ The program may take several hours to run.
 **Industrial and Systems Engineering, Georgia Institute of Technology**, Spring 2020
 
 **Team 10**
-Samantha Davanzo
-Brian Davis
-Mary Elizabeth Davis
-Bella Jackson
-Meredith Thacker
-Miles Trumbauer
+- Samantha Davanzo
+- Brian Davis
+- Mary Elizabeth Davis
+- Bella Jackson
+- Meredith Thacker
+- Miles Trumbauer
 
