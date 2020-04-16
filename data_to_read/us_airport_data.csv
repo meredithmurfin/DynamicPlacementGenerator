@@ -1,0 +1,287 @@
+AIRPORT CODE,NAME,ADDRESS,STATE,STATE REGION,HUB-SHORTEST DISTANCE,DISTANCE,HUB-SHORTEST TRAVEL TIME,TRAVEL TIME
+ABE,Lehigh Valley International Airport,"Airport Rd, Allentown, PA 18109",PA,DE-NJ-PA,DTW,545,DTW,498
+ABQ,Albuquerque International Sunport,"2200 Sunport Blvd, Albuquerque, NM 87106",NM,NM-CO,SLC,606,SLC,596
+ABR,Aberdeen Regional Airport,"4740 6th Ave SE, Aberdeen, SD 57401",SD,SD-NE,MSP,279,MSP,298
+ABY,Southwest Georgia Regional Airport,"3905 Newton Rd #100, Albany, GA 31701",GA,GA,ATL,185,ATL,174
+ACK,Nantucket Memorial Airport,"14 Airport Rd, Nantucket, MA 02554",MA,CT-RI-MA,DTW,830,DTW,878
+ADW,Andrews Air Force Base,"Knerr Dr, Joint Base Andrews, MD 20762",MD,MD-VA-PA,DTW,526,DTW,492
+AEX,Alexandria International Airport,"1100 Frank Andrews Blvd, Alexandria, LA 71303",LA,LA,ATL,581,ATL,542
+AGS,Augusta Regional Airport at Bush Field,"1501 Aviation Way, Augusta, GA 30906",GA,GA,ATL,160,ATL,146
+AHN,Athens Ben Epps Airport,"1010 Ben Epps Dr, Athens, GA 30605",GA,GA,ATL,84.2,ATL,97
+ALB,Albany International Airport,"Albany Shaker Rd, Colonie, NY",NY,NNY,DTW,566,DTW,522
+ALO,Waterloo Regional Airport,"2790 Livingston Ln, Waterloo, IA 50703",IA,IA-IL,MSP,191,MSP,193
+APN,Alpena County Regional Airport,"1617 Airport Rd, Alpena, MI 49707",MI,MI,DTW,251,DTW,234
+ATL,Hartsfield-Jackson Atlanta International Airport,"6000 N Terminal Pkwy, Atlanta, GA 30320",GA,R-ATL,ATL,1,ATL,1
+ATW,Appleton International Airport,"W6390 Challenger Dr, Appleton, WI 54914",WI,WI,MSP,281,MSP,256
+AUS,Austin-Bergstrom International Airport,"3600 Presidential Blvd, Austin, TX 78719",TX,TX,ATL,939,ATL,819
+AVL,Asheville Regional Airport,"61 Terminal Dr #1, Fletcher, NC 28732",NC,NC,ATL,204,ATL,204
+AVP,Wilkes-Barre/Scranton International Airport,"100 Terminal Rd, Avoca, PA 18641",PA,DE-NJ-PA,DTW,508,DTW,464
+AZO,Kalamazoo/Battle Creek International Airport,"5235 Portage Rd, Portage, MI 49002",MI,IL-IN-MI,DTW,121,DTW,112
+BDL,Bradley International Airport,"Schoephoester Rd, Windsor Locks, CT 06096",CT,CT-RI-MA,DTW,672,DTW,615
+BED,Laurence G. Hanscom Field,"200 Hanscom Dr, Bedford, MA 01730",MA,CT-RI-MA,DTW,733,DTW,672
+BFI,Boeing Field/King County International Airport,"7277 Perimeter Rd S, Seattle, WA 98108",WA,WA,SEA,7.2,SEA,17
+BGM,Greater Binghamton Airport,"Airport Rd, Johnson City, NY 13790",NY,NNY,DTW,515,DTW,468
+BGR,Bangor International Airport,"287 Godfrey Blvd, Bangor, ME 04401",ME,NH-VT-ME,DTW,877,DTW,864
+BHM,Birmingham–Shuttlesworth International Airport,"5900 Messer Airport Hwy, Birmingham, AL 35212",AL,AL,ATL,151,ATL,141
+BIF,Biggs Army Airfield,"Fort Bliss, El Paso, Texas",TX,NV-AZ-TX,LAX,823,LAX,733
+BIL,Billings Logan International Airport,"1901 Terminal Cir, Billings, MT 59105",MT,MT,SLC,554,SLC,524
+BIS,Bismarck Municipal Airport,"2301 University Dr, Bismarck, ND 58504",ND,ND,MSP,440,MSP,388
+BJI,Bemidji Regional Airport,"3824 Moberg Dr NW, Bemidji, MN 56601",MN,MN,MSP,232,MSP,229
+BKL,Cleveland Burke Lakefront Airport,"1501 N Marginal Rd, Cleveland, OH 44114",OH,OH,DTW,160,DTW,154
+BLV,MidAmerica St. Louis Airport,"9656 Air Terminal Dr, Mascoutah, IL 62258",IL,IL,CVG,333,CVG,296
+BMG,Monroe County Airport,"972 S Kirby Rd, Bloomington, IN 47403",IN,IN,CVG,161,CVG,160
+BMI,Central Illinois Regional Airport,"3201 Cira Dr, Bloomington, IL 61704",IL,IL,CVG,284,CVG,266
+BNA,Nashville International Airport,"1 Terminal Dr, Nashville, TN 37214",TN,TN,ATL,258,ATL,237
+BOI,Boise Air Terminal/Gowen Field,"3201 W Airport Way #1000, Boise, ID 83705",ID,ID,SLC,340,SLC,294
+BOS,Logan International Airport,"1 Harborside Dr, Boston, MA 02128",MA,CT-RI-MA,DTW,737,DTW,677
+BQK,Brunswick Golden Isles Airport,"295 Aviation Pkwy, Brunswick, GA 31525",GA,GA,ATL,300,ATL,263
+BRD,Brainerd Lakes Regional Airport,"16384 Airport Rd #5, Brainerd, MN 56401",MN,MN,MSP,141,MSP,144
+BTM,Bert Mooney Airport,"101 Airport Rd, Butte, MT 59701",MT,MT,SLC,424,SLC,376
+BTR,Baton Rouge Metropolitan Airport,"9430 Jackie Cochran Dr, Baton Rouge, LA 70811",LA,LA,ATL,525,ATL,451
+BTV,Burlington International Airport,"1200 Airport Dr, South Burlington, VT 05403",VT,NH-VT-ME,DTW,679,DTW,641
+BUF,Buffalo Niagara International Airport,"4200 Genesee St, Buffalo, NY 14225",NY,NNY,DTW,293,DTW,280
+BUR,Bob Hope Airport,"2627 N Hollywood Way, Burbank, CA 91505",CA,SCA,LAX,29.1,LAX,48
+BWI,Baltimore/Washington International Thurgood Marshall Airport,"7050 Friendship Rd, Baltimore, MD 21240",MD,MD-VA-PA,DTW,516,DTW,476
+BYH,Arkansas International Airport,"4701 Memorial Dr #201, Blytheville, AR 72315",AR,MO-AR,CVG,436,CVG,393
+BZN,Bozeman Yellowstone International Airport,"850 Gallatin Field Rd, Belgrade, MT 59714",MT,MT,SLC,414,SLC,391
+CAE,Columbia Metropolitan Airport,"3250 Airport Blvd, West Columbia, SC 29170",SC,SC,ATL,216,ATL,199
+CAK,Akron-Canton Airport,"5400 Lauby Rd, North Canton, OH 44720",OH,OH,DTW,192,DTW,184
+CDC,Cedar City Regional Airport,"2560 Aviation Way St, Cedar City, UT 84721",UT,NV-UT,SLC,257,SLC,219
+CHA,Chattanooga Metropolitan Airport,"1001 Airport Rd, Chattanooga, TN 37421",TN,TN,ATL,125,ATL,118
+CHO,Charlottesville–Albemarle Airport,"100 Bowen Loop #200, Charlottesville, VA 22911",VA,WV-VA,CVG,456,CVG,446
+CHS,Charleston International Airport,"5500 International Blvd, North Charleston, SC 29418",SC,SC,ATL,300,ATL,286
+CID,The Eastern Iowa Airport,"2121 Arthur Collins Pkwy SW, Cedar Rapids, IA 52404",IA,IA-IL,MSP,254,MSP,254
+CIU,Chippewa County International Airport,"5315 W Airport Dr, Kincheloe, MI 49788",MI,MI,DTW,338,DTW,289
+CKB,North Central West Virginia Airport,"2000 Aviation Way, Bridgeport, WV 26330",WV,WV-VA,CVG,282,CVG,285
+CLE,Cleveland Hopkins International Airport,"5300 Riverside Dr, Cleveland, OH 44135",OH,OH,DTW,148,DTW,146
+CLL,Easterwood Airport,"1 McKenzie Terminal Blvd, College Station, TX 77845",TX,TX,ATL,880,ATL,768
+CLT,Charlotte Douglas International Airport,"5501 Josh Birmingham Pkwy, Charlotte, NC 28208",NC,NC,ATL,248,ATL,236
+CMH,John Glenn Columbus International Airport,"4600 International Gateway, Columbus, OH 43219",OH,KY-OH,CVG,128,CVG,122
+CMI,University of Illinois Willard Airport,"11 Airport Rd, Savoy, IL 61874",IL,IL,CVG,245,CVG,235
+COD,Yellowstone Regional Airport,"2101 Roger Sedam Drive, Cody, WY 82414",WY,WY,SLC,444,SLC,426
+COS,Colorado Springs Airport,"7770 Milton E Proby Pkwy, Colorado Springs, CO 80916",CO,NM-CO,SLC,604,SLC,559
+COU,Columbia Regional Airport,"11300 S Airport Dr, Columbia, MO 65201",MO,MO-AR,CVG,472,CVG,432
+CPR,Casper–Natrona County International Airport,"8500 Airport Pkwy, Casper, WY 82604",WY,WY,SLC,415,SLC,381
+CPS,St. Louis Downtown Airport,"6100 Archview Dr, Cahokia, IL 62206",IL,IL,CVG,355,CVG,318
+CRW,Yeager Airport,"100 Airport Rd #175, Charleston, WV 25311",WV,WV-VA,CVG,206,CVG,209
+CSG,Columbus Airport,"3250 W Britt David Rd, Columbus, GA 31909",GA,GA,ATL,94,ATL,85
+CVG,Cincinnati/Northern Kentucky International Airport,"3087 Terminal Dr, Hebron, KY 41048",KY,R-CVG,CVG,1,CVG,1
+CVS,Cannon Air Force Base,"601 Chindit Blvd, Cannon AFB, NM 88103",NM,NM-CO,SLC,813,SLC,783
+CWA,Central Wisconsin Airport,"100 CWA Dr, Mosinee, WI 54455",WI,WI-MI,MSP,197,MSP,180
+DAB,Daytona Beach International Airport,"700 Catalina Dr, Daytona Beach, FL 32114",FL,NFL,ATL,434,ATL,376
+DAL,Dallas Love Field,"8008 Herb Kelleher Way, Dallas, TX 75235",TX,TX,ATL,798,ATL,704
+DAY,Dayton International Airport,"3600 Terminal Dr, Dayton, OH 45377",OH,KY-OH,CVG,78.2,CVG,80
+DCA,Ronald Reagan Washington National Airport,"2400 Smith Blvd, Arlington, VA 22202",VA,MD-VA-PA,DTW,514,DTW,479
+DEN,Denver International Airport,"8500 Peña Blvd, Denver, CO 80249",CO,NM-CO,SLC,528,SLC,483
+DFW,Dallas/Fort Worth International Airport,"2400 Aviation Dr, DFW Airport, TX 75261",TX,TX,ATL,810,ATL,709
+DHN,Dothan Regional Airport,"800 Airport Dr, Dothan, AL 36303",AL,AL,ATL,197,ATL,192
+DLH,Duluth International Airport,"4701 Grinden Dr, Duluth, MN 55811",MN,MN,MSP,165,MSP,157
+DSM,Des Moines International Airport,"5800 Fleur Dr, Des Moines, IA 50321",IA,IA-IL,MSP,245,MSP,223
+DTW,Detroit Metropolitan Wayne County Airport,"Detroit, MI 48242",MI,R-DTW,DTW,1,DTW,1
+ECP,Northwest Florida Beaches International Airport,"6300 W Bay Pkwy, Panama City, FL 32409",FL,NFL,ATL,285,ATL,289
+EFD,Ellington Field,"11210 Blume Ave, Houston, TX 77034",TX,TX,ATL,785,ATL,682
+EGE,Eagle County Regional Airport,"217 Eldon Wilson Rd, Gypsum, CO 81637",CO,NM-CO,SLC,399,SLC,369
+EKO,Elko Regional Airport,"975 Terminal Way, Elko, NV 89801",NV,NV-UT,SLC,229,SLC,201
+ELM,Elmira/Corning Regional Airport,"276 Sing Sing Rd #1, Horseheads, NY 14845",NY,NNY,DTW,454,DTW,415
+ELP,El Paso International Airport,"6701 Convair Rd, El Paso, TX 79925",TX,NV-AZ-TX,LAX,824,LAX,735
+ERI,Erie International Airport,"4411 W 12th St, Erie, PA 16505",PA,PA,DTW,253,DTW,241
+ESC,Delta County Airport,"3300 Airport Rd, Escanaba, MI 49829",MI,WI-MI,MSP,366,MSP,348
+EUG,Eugene Airport,"28801 Douglas Dr, Eugene, OR 97402",OR,OR,SEA,278,SEA,267
+EVV,Evansville Regional Airport,"7801 Bussing Dr, Evansville, IN 47725",IN,IN,CVG,205,CVG,189
+EWN,Coastal Carolina Regional Airport,"200 Terminal Dr, New Bern, NC 28562",NC,NC,ATL,512,ATL,456
+EWR,Newark Liberty International Airport,"3 Brewster Rd, Newark, NJ 07114",NJ,DE-NJ-PA,DTW,600,DTW,551
+EYW,Key West International Airport,"3491 S Roosevelt Blvd, Key West, FL 33040",FL,SFL,ATL,817,ATL,745
+FAR,Hector International Airport,"2801 32nd Ave N, Fargo, ND 58102",ND,ND,MSP,254,MSP,227
+FAT,Fresno Yosemite International Airport,"5175 E Clinton Way, Fresno, CA 93727",CA,NCA,LAX,228,LAX,222
+FAY,Fayetteville Regional Airport,"400 Airport Rd, Fayetteville, NC 28306",NC,NC,ATL,378,ATL,331
+FCA,Glacier Park International Airport,"4170 US-2, Kalispell, MT 59901",MT,ID-MT,SEA,522,SEA,498
+FLL,Fort Lauderdale–Hollywood International Airport,"100 Terminal Dr, Fort Lauderdale, FL 33315",FL,SFL,ATL,643,ATL,545
+FNT,Bishop International Airport,"3425 W Bristol Rd, Flint, MI 48507",MI,MI,DTW,73.8,DTW,69
+FOE,Topeka Regional Airport,"6510 SE Forbes Ave, Topeka, KS 66619",KS,KS-MO,MSP,500,MSP,439
+FRG,Republic Airport,"7150 Republic Airport, Farmingdale, NY 11735",NY,SNY,DTW,643,DTW,605
+FSD,Sioux Falls Regional Airport,"2801 N Jaycee Ln, Sioux Falls, SD 57104",SD,SD-NE,MSP,230,MSP,222
+FSM,Fort Smith Regional Airport,"6700 McKennon Blvd #200, Fort Smith, AR 72903",AR,AR-LA,ATL,677,ATL,609
+FWA,Fort Wayne International Airport,"3801 W Ferguson Rd, Fort Wayne, IN 46809",IN,IL-IN-MI,DTW,161,DTW,153
+GCC,Gillette–Campbell County Airport,"2000 Airport Rd, Gillette, WY 82716",WY,WY,SLC,539,SLC,500
+GEG,Spokane International Airport,"9000 W Airport Dr, Spokane, WA 99224",WA,WA,SEA,284,SEA,263
+GFK,Grand Forks International Airport,"2301 Airport Dr, Grand Forks, ND 58203",ND,ND,MSP,330,MSP,290
+GJT,Grand Junction Regional Airport,"2828 Walker Field Dr, Grand Junction, CO 81506",CO,NM-CO,SLC,288,SLC,268
+GLH,Mid-Delta Regional Airport,"278 Fifth Avenue, Greenville, MS 38703",MS,MS,ATL,432,ATL,419
+GNV,Gainesville Regional Airport,"3880 NE 39th Ave A, Gainesville, FL 32609",FL,NFL,ATL,330,ATL,291
+GPT,Gulfport–Biloxi International Airport,"14035 Airport Rd, Gulfport, MS 39503",MS,MS,ATL,389,ATL,336
+GRB,Austin Straubel International Airport,"2077 Airport Dr, Green Bay, WI 54313",WI,WI-MI,MSP,279,MSP,254
+GRK,Killeen–Fort Hood Regional Airport,"8101 S Clear Creek Rd, Killeen, TX 76549",TX,TX,ATL,902,ATL,819
+GRR,Gerald R. Ford International Airport,"5500 44th St SE, Grand Rapids, MI 49512",MI,IL-IN-MI,DTW,148,DTW,134
+GSO,Piedmont Triad International Airport,"1000 Ted Johnson Pkwy, Greensboro, NC 27409",NC,NC,ATL,347,ATL,318
+GSP,Greenville–Spartanburg International Airport,"2000 GSP Dr, Greer, SC 29651",SC,SC,ATL,166,ATL,156
+GTF,Great Falls International Airport,"2800 Terminal Dr, Great Falls, MT 59404",MT,MT,SLC,563,SLC,502
+GTR,Golden Triangle Regional Airport,"2080 Airport Rd, Columbus, MS 39701",MS,MS,ATL,281,ATL,262
+HDN,Yampa Valley Airport,"11005 Co Rd 51A, Hayden, CO 81639",CO,NM-CO,SLC,316,SLC,329
+HIB,Range Regional Airport,"11038 MN-37, Hibbing, MN 55746",MN,MN,MSP,209,MSP,192
+HLN,Helena Regional Airport,"2850 Mercer Loop, Helena, MT 59602",MT,MT,SLC,480,SLC,429
+HOP,Campbell Army Airfield,"Oak Grove, KY 42262",KY,KY-OH,CVG,280,CVG,249
+HOU,William P. Hobby Airport,"7800 Airport Blvd, Houston, TX 77061",TX,TX,ATL,787,ATL,685
+HPN,Westchester County Airport,"240 Airport Rd, White Plains, NY 10604",NY,SNY,DTW,632,DTW,581
+HSV,Huntsville International Airport,"1000 Glenn Hearn Blvd SW, Huntsville, AL 35824",AL,AL,ATL,202,ATL,219
+HUF,Terre Haute International Airport,"S Airport St, Terre Haute, IN 47803",IN,IN,CVG,179,CVG,169
+IAD,Washington Dulles International Airport,"1 Saarinen Cir, Dulles, VA 20166",VA,MD-VA-PA,DTW,506,DTW,481
+IAH,George Bush Intercontinental Airport,"2800 N Terminal Rd, Houston, TX 77032",TX,TX,ATL,794,ATL,691
+ICT,Wichita Dwight D. Eisenhower National Airport,"2277 Eisenhower Airport Pkwy, Wichita, KS 67209",KS,KS-MO,MSP,636,MSP,554
+IDA,Idaho Falls Regional Airport,"2140 N Skyline Dr, Idaho Falls, ID 83402",ID,ID,SLC,217,SLC,187
+ILG,Wilmington Airport,"151 N Dupont Hwy # 11, New Castle, DE 19720",DE,DE-NJ-PA,DTW,582,DTW,539
+ILM,Wilmington International Airport,"1740 Airport Blvd, Wilmington, NC 28405",NC,NC,ATL,427,ATL,379
+ILN,Wilmington Air Park,"1113 Airport Rd, Wilmington, OH 45177",OH,KY-OH,CVG,70,CVG,73
+IMT,Ford Airport,"400 Riverhills Rd, Kingsford, MI 49802",MI,WI-MI,MSP,315,MSP,315
+IND,Indianapolis International Airport,"7800 Col. H. Weir Cook Memorial Dr, Indianapolis, IN 46241",IN,IN,CVG,124,CVG,118
+INL,Falls International Airport,"3214 2nd Ave E, International Falls, MN 56649",MN,MN,MSP,301,MSP,283
+INS,Creech Air Force Base,"Indian Springs, NV 89018",NV,NV-AZ-TX,LAX,330,LAX,303
+INT,Smith Reynolds Airport,"3801 N Liberty St # 204, Winston-Salem, NC 27105",NC,NC,ATL,331,ATL,307
+IPT,Williamsport Regional Airport,"724 Airport Rd, Montoursville, PA 17754",PA,PA,DTW,433,DTW,403
+ITH,Ithaca Tompkins Regional Airport,"1 Culligan Dr, Ithaca, NY 14850",NY,NNY,DTW,490,DTW,460
+JAC,Jackson Hole Airport,"1250 E Airport Rd, Jackson, WY 83001",WY,WY,SLC,290,SLC,294
+JAN,Jackson–Evers International Airport,"100 International Dr, Jackson, MS 39208",MS,MS,ATL,383,ATL,343
+JAX,Jacksonville International Airport,"2400 Yankee Clipper Dr, Jacksonville, FL 32218",FL,NFL,ATL,352,ATL,306
+JFK,John F. Kennedy International Airport,"Queens, NY 11430",NY,SNY,DTW,626,DTW,589
+LAF,Purdue University Airport,"1501 Aviation Dr, West Lafayette, IN 47907",IN,IN,CVG,181,CVG,178
+LAN,Capital Region International Airport,"4100 Capitol City Blvd, Lansing, MI 48906",MI,MI,DTW,93.5,DTW,92
+LAS,McCarran International Airport,"5757 Wayne Newton Blvd, Las Vegas, NV 89119",NV,NV-AZ-TX,LAX,283,LAX,264
+LAW,Lawton–Fort Sill Regional Airport,"3401 SW 11th St, Lawton, OK 73501",OK,AR-OK,MSP,874,MSP,754
+LAX,Los Angeles International Airport,"1 World Way, Los Angeles, CA 90045",CA,R-LAX,LAX,1,LAX,1
+LCK,Rickenbacker International Airport,"2295 John Cir Dr, Columbus, OH 43217",OH,KY-OH,CVG,120,CVG,121
+LEX,Blue Grass Airport,"4000 Terminal Dr, Lexington, KY 40510",KY,KY-OH,CVG,84.8,CVG,83
+LFI,Langley Air Force Base,"Hampton, VA 23665",VA,VA,ATL,592,ATL,555
+LFT,Lafayette Regional Airport,"200 Terminal Dr, Lafayette, LA 70508",LA,LA,ATL,572,ATL,499
+LGA,LaGuardia Airport,"Queens, NY 11371",NY,SNY,DTW,615,DTW,570
+LGB,Long Beach Airport,"4100 Donald Douglas Dr, Long Beach, CA 90808",CA,SCA,LAX,22,LAX,29
+LIT,Clinton National Airport,"1 Airport Rd, Little Rock, AR 72202",AR,AR-LA,ATL,524,ATL,478
+LNK,Lincoln Airport,"2400 W Adams St, Lincoln, NE 68524",NE,SD-NE,MSP,427,MSP,376
+LRF,Little Rock Air Force Base,"Little Rock AFB, Jacksonville, AR",AR,AR-LA,ATL,526,ATL,480
+LSE,La Crosse Regional Airport,"2850 Airport Dr, La Crosse, WI 54603",WI,WI,MSP,149,MSP,141
+LSV,Nellis Air Force Base,"4475 England Ave, Nellis AFB, NV 89191",NV,NV-AZ-TX,LAX,295,LAX,281
+LWB,Greenbrier Valley Airport,"558 Airport Rd, Lewisburg, WV 24901",WV,WV-VA,CVG,316,CVG,315
+LWS,Lewiston–Nez Perce County Airport,"406 Burrell Ave, Lewiston, ID 83501",ID,ID-MT,SEA,323,SEA,323
+MBS,MBS International Airport,"9200 Garfield Rd, Freeland, MI 48623",MI,MI,DTW,126,DTW,116
+MCF,MacDill Air Force Base,"MacDill Air Force Base, Tampa, FL 33621",FL,SFL,ATL,463,ATL,403
+MCI,Kansas City International Airport,"Kansas City, MO 64153",MO,KS-MO,MSP,432,MSP,380
+MCO,Orlando International Airport,"1 Jeff Fuqua Blvd, Orlando, FL 32827",FL,NFL,ATL,446,ATL,382
+MDT,Harrisburg International Airport,"1 Terminal Dr, Middletown, PA 17057",PA,PA,DTW,478,DTW,439
+MDW,Midway International Airport,"5700 S Cicero Ave, Chicago, IL 60638",IL,IL-IN-MI,DTW,270,DTW,256
+MEI,Meridian Regional Airport,"2811 Airport Blvd S, Meridian, MS 39307",MS,MS,ATL,301,ATL,269
+MEM,Memphis International Airport,"2491 Winchester Rd, Memphis, TN 38116",TN,TN,ATL,381,ATL,348
+MFR,Rogue Valley International–Medford Airport,"1000 Terminal Loop Pkwy, Medford, OR 97504",OR,OR,SEA,432,SEA,410
+MGM,Montgomery Regional Airport,"4445 Selma Hwy, Montgomery, AL 36108",AL,AL,ATL,160,ATL,144
+MHK,Manhattan Regional Airport,"5500 Skyway Dr #120, Manhattan, KS 66503",KS,KS-MO,MSP,560,MSP,488
+MHT,Manchester–Boston Regional Airport,"1 Airport Rd, Manchester, NH 03103",NH,NH-VT-ME,DTW,765,DTW,702
+MIA,Miami International Airport,"2100 NW 42nd Ave, Miami, FL 33126",FL,SFL,ATL,662,ATL,563
+MIB,Minot Air Force Base,"Minot Air Force Base, North Dakota 58705",ND,ND,MSP,527,MSP,485
+MIE,Delaware County Regional Airport,"311 W Carl Simmons Dr, Muncie, IN 47303",IN,IN,CVG,112,CVG,136
+MKC,Charles B. Wheeler Downtown Airport,"900 Richards Rd, Kansas City, MO 64116",MO,KS-MO,MSP,432,MSP,377
+MKE,Milwaukee Mitchell International Airport,"5300 S Howell Ave, Milwaukee, WI 53207",WI,WI,MSP,344,MSP,307
+MLB,Orlando Melbourne International Airport,"1 Air Terminal Pkwy, Melbourne, FL 32901",FL,SFL,ATL,504,ATL,439
+MLI,Quad City International Airport,"2200 69th Ave, Moline, IL 61265",IL,IA-IL,MSP,335,MSP,325
+MLU,Monroe Regional Airport,"5400 Operations Rd, Monroe, LA 71212",LA,AR-LA,ATL,503,ATL,448
+MOB,Mobile Regional Airport,"8400 Airport Blvd, Mobile, AL 36608",AL,AL,ATL,327,ATL,291
+MOT,Minot International Airport,"305 Airport Rd, Minot, ND 58703",ND,ND,MSP,513,MSP,470
+MQT,Sawyer International Airport,"125 Ave G, Gwinn, MI 49841",MI,WI-MI,MSP,394,MSP,403
+MQY,Smyrna Airport,"278 Doug Warpoole Rd, Smyrna, TN 37167",TN,TN,ATL,243,ATL,228
+MSL,Northwest Alabama Regional Airport,"1729 T Ed Campbell Dr, Muscle Shoals, AL 35661",AL,AL,ATL,263,ATL,252
+MSN,Dane County Regional Airport,"4000 International Ln, Madison, WI 53704",WI,WI,MSP,267,MSP,241
+MSO,Missoula International Airport,"5225 U.S. Highway 10 W, Missoula, MT 59808",MT,ID-MT,SEA,481,SEA,454
+MSP,Minneapolis–Saint Paul International Airport,"7150 Humphrey Dr, Minneapolis, MN 55450",MN,R-MSP,MSP,1,MSP,1
+MSY,Louis Armstrong New Orleans International Airport,"1 Terminal Dr, Kenner, LA 70062",LA,LA,ATL,470,ATL,408
+MTJ,Montrose Regional Airport,"2100 Airport Rd, Montrose, CO 81401",CO,NM-CO,SLC,345,SLC,332
+MVY,Martha's Vineyard Airport,"71 Airport Rd, West Tisbury, MA 02575",MA,CT-RI-MA,DTW,808,DTW,798
+MYR,Myrtle Beach International Airport,"1100 Jetport Rd, Myrtle Beach, SC 29577",SC,SC,ATL,371,ATL,349
+MZJ,Pinal Airpark,"24641 E Pinal Airpark Rd, Red Rock, AZ 85145",AZ,NV-AZ-TX,LAX,478,LAX,436
+NBG,NAS JRB New Orleans,"301 Russell Dr, Belle Chasse, LA 70037",LA,LA,ATL,473,ATL,418
+NCO,Quonset State Airport,"150 Airport St, North Kingstown, RI 02852",RI,CT-RI-MA,DTW,776,DTW,717
+NGU,NS Norfolk,"Norfolk, VA 23511",VA,VA,ATL,586,ATL,555
+NIP,NAS Jacksonville,"Jacksonville, FL 32212",FL,NFL,ATL,351,ATL,307
+NKT,Marine Corps Air Station Cherry Point,"MCAS Cherry Point, NC 28533",NC,NC,ATL,536,ATL,484
+NQX,NAS Key West,"800 Sigsbee Rd, Key West, FL 33040",FL,SFL,ATL,818,ATL,746
+NUW,NAS Whidbey Island,"3730 N Charles Porter Ave, Oak Harbor, WA 98278",WA,WA,SEA,106,SEA,117
+NZY,NAS North Island,"San Diego, CA 92135",CA,SCA,LAX,130,LAX,127
+OAJ,Albert J. Ellis Airport,"264 Albert J. Ellis Airport Rd, Richlands, NC 28574",NC,NC,ATL,444,ATL,420
+OAK,Oakland International Airport,"1 Airport Dr, Oakland, CA 94621",CA,NCA,LAX,369,LAX,344
+OCF,Ocala International Airport,"750 SW 60th Ave, Ocala, FL 34474",FL,NFL,ATL,362,ATL,311
+OFF,Offutt Air Force Base,"Offutt AFB, NE 68113",NE,SD-NE,MSP,380,MSP,335
+OKC,Will Rogers World Airport,"7100 Terminal Dr, Oklahoma City, OK 73159",OK,AR-OK,MSP,792,MSP,686
+OMA,Eppley Airfield,"4501 Abbott Dr, Omaha, NE 68110",NE,SD-NE,MSP,377,MSP,336
+ONT,Ontario International Airport,"2500 E Airport Dr, Ontario, CA 91761",CA,SCA,LAX,56.9,LAX,68
+ORD,O'Hare International Airport,"10000 W O'Hare Ave, Chicago, IL 60666",IL,IL-IN-MI,DTW,289,DTW,261
+ORF,Norfolk International Airport,"2200 Norview Ave, Norfolk, VA 23518",VA,VA,ATL,586,ATL,548
+PBI,Palm Beach International Airport,"1000 James L Turnage Blvd, West Palm Beach, FL 33415",FL,SFL,ATL,597,ATL,506
+PDX,Portland International Airport,"7000 NE Airport Way, Portland, OR 97218",OR,OR,SEA,162,SEA,158
+PHF,Newport News/Williamsburg International Airport,"900 Bland Blvd, Newport News, VA 23602",VA,VA,CVG,584,ATL,544
+PHL,Philadelphia International Airport,"8000 Essington Ave, Philadelphia, PA 19153",PA,MD-VA-PA,DTW,581,DTW,532
+PHX,Phoenix Sky Harbor International Airport,"3400 E Sky Harbor Blvd, Phoenix, AZ 85034",AZ,NV-AZ-TX,LAX,392,LAX,365
+PIA,General Wayne A. Downing Peoria International Airport,"6100 W Everett McKinley Dirksen Pkwy, Peoria, IL 61607",IL,IL,CVG,329,CVG,303
+PIB,Hattiesburg–Laurel Regional Airport,"1002 Terminal Dr, Moselle, MS 39459",MS,MS,ATL,374,ATL,332
+PIE,St. Pete–Clearwater International Airport,"14700 Terminal Blvd #221, Clearwater, FL 33762",FL,SFL,ATL,470,ATL,406
+PIH,Pocatello Regional Airport,"1950 Airport Way, Pocatello, ID 83204",ID,ID,SLC,177,SLC,154
+PIT,Pittsburgh International Airport,"1000 Airport Blvd, Pittsburgh, PA 15231",PA,PA,DTW,264,DTW,247
+PLN,Pellston Regional Airport,"1395 US-31, Pellston, MI 49769",MI,MI,DTW,290,DTW,250
+PNS,Pensacola International Airport,"2430 Airport Blvd, Pensacola, FL 32504",FL,NFL,ATL,313,ATL,291
+PSC,Tri-Cities Airport,"3601 N 20th Ave, Pasco, WA 99301",WA,WA,SEA,230,SEA,217
+PSP,Palm Springs International Airport,"3400 E Tahquitz Canyon Way, Palm Springs, CA 92262",CA,SCA,LAX,124,LAX,133
+PTK,Oakland County International Airport,"6500 Highland Rd, Waterford Twp, MI 48327",MI,MI,DTW,38.9,DTW,51
+PVD,Theodore Francis Green State Airport,"2000 Post Rd, Warwick, RI 02886",RI,CT-RI-MA,DTW,774,DTW,712
+PVU,Provo Municipal Airport,"3421 Mike Jense Pkwy, Provo, UT 84601",UT,NV-UT,SLC,50.3,SLC,54
+PWM,Portland International Jetport,"1001 Westbrook St, Portland, ME 04102",ME,NH-VT-ME,DTW,831,DTW,762
+RAP,Rapid City Regional Airport,"4550 Terminal Rd, Rapid City, SD 57703",SD,SD-NE,MSP,570,MSP,503
+RDM,Redmond Municipal Airport,"2522 SE Jesse, Dana Butler Ct, Redmond, OR 97756",OR,OR,SEA,302,SEA,318
+RDU,Raleigh–Durham International Airport,"2400 John Brantley Blvd, Morrisville, NC 27560",NC,NC,ATL,406,ATL,370
+RIC,Richmond International Airport,"1 Richard E Byrd Terminal Dr, Richmond, VA 23250",VA,VA,CVG,526,ATL,491
+RIV,March Air Reserve Base,"14560 2nd St, March Air Reserve Base, CA 92518",CA,SCA,LAX,79.1,LAX,86
+RKS,Rock Springs–Sweetwater County Airport,"Airport Rd, Rock Springs, WY 82901",WY,WY,SLC,198,SLC,183
+RNO,Reno–Tahoe International Airport,"2001 E Plumb Ln, Reno, NV 89502",NV,NV-UT,LAX,472,SLC,443
+ROA,Roanoke–Blacksburg Regional Airport,"5202 Aviation Dr NW, Roanoke, VA 24012",VA,WV-VA,CVG,379,CVG,380
+ROC,Greater Rochester International Airport,"1200 Brooks Ave, Rochester, NY 14624",NY,NNY,DTW,351,DTW,334
+RST,Rochester International Airport,"7600 Helgerson Dr SW, Rochester, MN 55901",MN,MN,MSP,86.9,MSP,86
+RSW,Southwest Florida International Airport,"11000 Terminal Access Rd, Fort Myers, FL 33913",FL,SFL,ATL,585,ATL,495
+SAN,San Diego International Airport,"3225 N Harbor Dr, San Diego, CA 92101",CA,SCA,LAX,125,LAX,124
+SAT,San Antonio International Airport,"9800 Airport Blvd, San Antonio, TX 78216",TX,TX,ATL,983,ATL,854
+SAV,Savannah/Hilton Head International Airport,"400 Airways Ave, Savannah, GA 31408",GA,GA,ATL,243,ATL,215
+SBD,San Bernardino International Airport,"1601 E 3rd St #100, San Bernardino, CA 92408",CA,SCA,LAX,80.5,LAX,90
+SBN,South Bend International Airport,"4477 Progress Dr, South Bend, IN 46628",IN,IL-IN-MI,DTW,201,DTW,185
+SCE,University Park Airport,"2493 Fox Hill Rd, State College, PA 16803",PA,PA,DTW,381,DTW,362
+SDF,Louisville International Airport,"600 Terminal Dr, Louisville, KY 40209",KY,KY-OH,CVG,102,CVG,95
+SEA,Seattle–Tacoma International Airport,"17801 International Blvd, Seattle, WA 98158",WA,R-SEA,SEA,1,SEA,1
+SFO,San Francisco International Airport,"San Francisco, CA 94128",CA,NCA,LAX,382,LAX,362
+SGF,Springfield–Branson National Airport,"2300 N Airport Blvd, Springfield, MO 65802",MO,MO-AR,CVG,575,CVG,513
+SGU,St. George Regional Airport,"4550 S Airport Pkwy, St. George, UT 84790",UT,NV-UT,SLC,320,SLC,274
+SHV,Shreveport Regional Airport,"5103 Hollywood Ave Suite 300, Shreveport, LA 71109",LA,AR-LA,ATL,609,ATL,538
+SJC,San Jose International Airport,"2077 Airport Blvd, San Jose, CA 95110",CA,NCA,LAX,347,LAX,328
+SKA,Fairchild Air Force Base,"200 W Castle St, Fairchild AFB, WA 99011",WA,WA,SEA,284,SEA,267
+SLC,Salt Lake City International Airport,"776 N Terminal Dr, Salt Lake City, UT 84122",UT,R-SLC,SLC,1,SLC,1
+SMF,Sacramento International Airport,"6900 Airport Blvd, Sacramento, CA 95837",CA,NCA,LAX,399,LAX,367
+SNA,John Wayne Airport,"18601 Airport Way, Santa Ana, CA 92707",CA,SCA,LAX,41.9,LAX,48
+SRQ,Sarasota–Bradenton International Airport,"6000 Airport Cir, Sarasota, FL 34243",FL,SFL,ATL,504,ATL,436
+STL,Lambert–St. Louis International Airport,"10701 Lambert International Blvd, St. Louis, MO 63145",MO,MO-AR,CVG,368,CVG,328
+SUN,Friedman Memorial Airport,"1616 Airport Cir, Hailey, ID 83333",ID,ID,SLC,284,SLC,263
+SVN,Hunter Army Airfield,"525 Leonard Neal Street #6010, Savannah, GA 31409",GA,GA,ATL,248,ATL,221
+SWF,Stewart International Airport,"1180 1st St, New Windsor, NY 12553",NY,SNY,DTW,607,DTW,557
+SYR,Syracuse Hancock International Airport,"1000 Col Eileen Collins Blvd, Syracuse, NY 13212",NY,NNY,DTW,431,DTW,402
+TCL,Tuscaloosa Regional Airport,"7601 R Cardinal Airport Rd, Tuscaloosa, AL 35401",AL,AL,ATL,216,ATL,200
+TCM,McChord Field,"McChord AFB, Tacoma, WA 98438",WA,WA,SEA,34.4,SEA,42
+TLH,Tallahassee International Airport,"3300 Capital Cir SW, Tallahassee, FL 32310",FL,NFL,ATL,265,ATL,259
+TPA,Tampa International Airport,"4100 George J Bean Pkwy, Tampa, FL 33607",FL,SFL,ATL,461,ATL,394
+TRI,Tri-Cities Regional Airport,"2525 TN-75 Suite 301, Blountville, TN 37617",TN,TN,ATL,291,ATL,289
+TUL,Tulsa International Airport,"7777 Airport Dr, Tulsa, OK 74115",OK,AR-OK,MSP,667,MSP,609
+TUP,Tupelo Regional Airport,"2763 W Jackson Street Extended, Tupelo, MS 38801",MS,MS,ATL,293,ATL,267
+TUS,Tucson International Airport,"7250 S Tucson Blvd, Tucson, AZ 85756",AZ,NV-AZ-TX,LAX,508,LAX,467
+TVC,Cherry Capital Airport,"727 Fly Don't Dr, Traverse City, MI 49686",MI,MI,DTW,257,DTW,240
+TVF,Thief River Falls Regional Airport,"13722 Airport Dr, Thief River Falls, MN 56701",MN,MN,MSP,306,MSP,305
+TWF,Magic Valley Regional Airport,"492 Airport Loop, Twin Falls, ID 83301",ID,ID,SLC,226,SLC,206
+TYS,McGhee Tyson Airport,"2055 Alcoa Hwy, Alcoa, TN 37701",TN,TN,ATL,226,ATL,208
+VAD,Moody Air Force Base,"Moody AFB, Georgia 31699",GA,GA,ATL,227,ATL,206
+VCV,Southern California Logistics Airport,"18374 Phantom W, Victorville, CA 92394",CA,SCA,LAX,105,LAX,110
+VLD,Valdosta Regional Airport,"1750 Airport Rd, Valdosta, GA 31601",GA,GA,ATL,228,ATL,200
+VOK,Volk Field Air National Guard Base,"100 Independence Dr, Camp Douglas, WI 54618",WI,WI,MSP,184,MSP,167
+VPS,Destin–Fort Walton Beach Airport,"1701 State Road 85 North, Eglin AFB, FL 32542",FL,NFL,ATL,308,ATL,285
+VQQ,Cecil Airport,"13365 Simpson Way, Jacksonville, FL 32221",FL,NFL,ATL,334,ATL,297
+WRI,McGuire Air Force Base,"3021 McGuire Blvd, McGuire AFB, NJ 08641",NJ,DE-NJ-PA,DTW,603,DTW,553
+WYS,Yellowstone Airport,"721 Airport Rd, West Yellowstone, MT 59758",MT,MT,SLC,326,SLC,292
+XNA,Northwest Arkansas Regional Airport,"1 Airport Blvd, Bentonville, AR 72712",AR,AR-OK,MSP,648,MSP,579
+YIP,Willow Run Airport,"801 Willow Run Airport, Ypsilanti, MI 48198",MI,MI,DTW,14.9,DTW,19
+YNG,Youngstown–Warren Regional Airport,"1453 Youngstown Kingsville Rd, Vienna Center, OH 44473",OH,OH,DTW,215,DTW,206
