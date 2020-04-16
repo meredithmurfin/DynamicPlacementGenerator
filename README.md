@@ -224,6 +224,6 @@ Turnover documents will be provided that will outline how to re-calculate regres
 - Brian Davis
 - Mary Elizabeth Davis
 - Bella Jackson
-- Meredith Thacker
+- Meredith Murfin
 - Miles Trumbauer
 
