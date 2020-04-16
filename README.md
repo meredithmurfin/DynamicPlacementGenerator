@@ -133,20 +133,20 @@ This file contains the summed monthly total ground time (in minutes) of all depa
 
 **`num_departures_by_hub_monthly.csv`**
 
-This file contains the monthl count of departure occurrences for each hub. The count of departure occurrences for all airports excluding hubs is included in the OTHER column.
+This file contains the monthly count of departure occurrences for each hub. The count of departure occurrences for all airports excluding hubs is included in the OTHER column.
 
 #### Update Information to Reflect Current State/System
 
 **`data_to_read/removal_info.csv`**
 
-This file contains information on expected removals for each engine subtype. This most likely will not need to be updated often. For each engine subtype, the following is specified:
+This file contains information on expected number of removals for each engine subtype. This will most likely not need to be updated often. For each engine subtype, the following is specified:
 - Expected maximum number of removals in a month for all airports
 - Expected maximum number of removals in a month for each specific hub
 - Expected maximum number of removals in a month for all airports excluding hubs
 - Expected AOS cost
 - Whether or not these files were updated from the previous month (if any of the data for a subtype has been updated, make sure to set the UPDATED column value for that row to be TRUE)
 
-Our team based the values on past removal data for each type. We based the maximum number of removals that could happen on data from 2015-2019. We took the maximum that had ever occurred for each and added 1 to it. For example, if no more than 3 removals ever occurred in ATL, we assumed the maximum number of removals that could ever happen would be 4.
+Our team based these values on past removal data for each type. We set the maximum number of removals that could happen based on data from 2015-2019 by taking the maximum that had ever occurred for each and adding 1 to it. For example, if no more than 3 removals ever occurred in ATL, we assumed the maximum number of removals that could ever happen at ATL would be 4.
 
 Limitations:
 - The maximum number of removals for all airports cannot be less than 1 or greater than 10
