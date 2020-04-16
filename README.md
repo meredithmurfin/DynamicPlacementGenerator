@@ -182,13 +182,20 @@ The program may take several hours to run.
 
 ## Files Provided
 
-For each engine subtype (using the BR700-715C1-30 as the example):
-- `BR700-715C1-30_total_RONSRADS_ground_time_by_hub_monthly.csv` (RON/RAD ground time data for January 2019 spare placement)
-- `BR700-715C1-30_total_departures_ground_time_by_state_region_monthly.csv` (departure ground time data for January 2019 spare placement)
-- `BR700-715C1-30_num_departures_by_hub_monthly.csv` (departure counts for January 2019 spare placement)
-- `BR700-715C1-30_regression.csv` (regression values to determine probabilities based on 2015-2019 data)
-- `BR700-715C1-30_number_of_broken_engines_and_number_repaired.csv` (probabilities of number of engines repaired based on the number broken, based on 2015-2019 data)
-- `BR700-715C1-30_expected_transport_cost.csv` (expected transportation costs from each hub to each state region)
+For each engine subtype (located in `DynamicPlacementGenerator/data_to_read/engine_subtype/`):
+
+| File 															| Description 												|
+| ------------------------------------------------------------- | --------------------------------------------------------- |
+| `total_RONSRADS_ground_time_by_hub_monthly.csv` 				| RON/RAD ground time data for 01-2019 spare placement 		|
+| `total_departures_ground_time_by_state_region_monthly.csv`	| Departure ground time data for 01-2019 spare placement 	|
+| `num_departures_by_hub_monthly.csv` 							| Departure counts for 01-2019 spare placement 				|
+| `regression.csv` 												| Regression values based on 2015-2019 data 				|
+| `number_of_broken_engines_and_number_repaired.csv` 			| Probabilities of engines repaired given on engines broken |
+| `expected_transport_cost.csv` 								| Expected transportation costs from hubs to state regions 	|
+
+Turnover documents will be provided that will outline how to re-calculate regression values based on new past data.
+
+**The format of these documents (the naming of the file, the header structure and naming, etc.) must remain the same in order for the program to work.**
 
 ## Authors
 
